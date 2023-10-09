@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.9.30)  8 OCT 2023 19:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.9.30)  9 OCT 2023 14:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -23,48 +23,189 @@ File: size10.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip48
 \belowcaptionskip=\skip49
 \bibindent=\dimen140
+) (c:/texlive/2023/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
+\LTleft=\skip50
+\LTright=\skip51
+\LTpre=\skip52
+\LTpost=\skip53
+\LTchunksize=\count193
+\LTcapwidth=\dimen141
+\LT@head=\box51
+\LT@firsthead=\box52
+\LT@foot=\box53
+\LT@lastfoot=\box54
+\LT@gbox=\box55
+\LT@cols=\count194
+\LT@rows=\count195
+\c@LT@tables=\count196
+\c@LT@chunks=\count197
+\LT@p@ftn=\toks17
+) (c:/texlive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 227.
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+) (c:/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1357.
+Package xcolor Info: Model `RGB' extended on input line 1369.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1371.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
+) (c:/texlive/2023/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\enitkv@toks@=\toks18
+\labelindent=\skip54
+\enit@outerparindent=\dimen142
+\enit@toks=\toks19
+\enit@inbox=\box56
+\enit@count@id=\count198
+\enitdp@description=\count199
+) (c:/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks20
+) (c:/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+ (c:/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+))
+\Gm@cnth=\count266
+\Gm@cntv=\count267
+\c@Gm@tempcnt=\count268
+\Gm@bindingoffset=\dimen143
+\Gm@wd@mp=\dimen144
+\Gm@odd@mp=\dimen145
+\Gm@even@mp=\dimen146
+\Gm@layoutwidth=\dimen147
+\Gm@layoutheight=\dimen148
+\Gm@layouthoffset=\dimen149
+\Gm@layoutvoffset=\dimen150
+\Gm@dimlist=\toks21
+) (c:/texlive/2023/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count269
+\float@exts=\toks22
+\float@box=\box57
+\@float@everytoks=\toks23
+\@floatcapt=\box58
 ) (c:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2023-04-19 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count193
-\l__pdf_internal_box=\box51
+\l__color_backend_stack_int=\count270
+\l__pdf_internal_box=\box59
 ) (./FYP Documentation.aux)
 \openout1 = `"FYP Documentation.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
- [1
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+ (c:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count271
+\scratchdimen=\dimen151
+\scratchbox=\box60
+\nofMPsegments=\count272
+\nofMParguments=\count273
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count274
+\MPscratchDim=\dimen152
+\MPnumerator=\count275
+\makeMPintoPDFobject=\count276
+\everyMPtoPDFconversion=\toks25
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(92.14519pt, 430.00462pt, 92.14519pt)
+* v-part:(T,H,B)=(95.39737pt, 556.47656pt, 143.09605pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=430.00462pt
+* \textheight=556.47656pt
+* \oddsidemargin=19.8752pt
+* \evensidemargin=19.8752pt
+* \topmargin=-13.87262pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-{c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [1] (./FYP Documentation.aux)
+[1
+
+{c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (12.0pt too wide) in alignment at lines 50--51
+ [] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in alignment at lines 51--52
+ [] 
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 61.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 61.
+
+Overfull \hbox (12.0pt too wide) in alignment at lines 52--62
+ [] 
+ []
+
+[1{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] (./FYP Documentation.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 443 strings out of 474928
- 8794 string characters out of 5763562
- 1920785 words of memory out of 5000000
- 22068 multiletter control sequences out of 15000+600000
- 560232 words of font info for 43 fonts, out of 8000000 for 9000
+ 2531 strings out of 474928
+ 38540 string characters out of 5763562
+ 1924785 words of memory out of 5000000
+ 24103 multiletter control sequences out of 15000+600000
+ 561474 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 35i,5n,50p,681b,169s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on "FYP Documentation.pdf" (2 pages, 60644 bytes).
+ 57i,11n,65p,1166b,472s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on "FYP Documentation.pdf" (2 pages, 99457 bytes).
 PDF statistics:
- 31 PDF objects out of 1000 (max. 8388607)
- 18 compressed objects within 1 object stream
+ 52 PDF objects out of 1000 (max. 8388607)
+ 31 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

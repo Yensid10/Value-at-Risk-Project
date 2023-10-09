@@ -1,4 +1,14 @@
 \documentclass{article}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{float}
+
+\newcommand\ytl[2]{
+    \parbox[b]{12em}{\hfill{\color{cyan}\bfseries\sffamily #1}~$\cdots\cdots$~}\makebox[0pt][c]{$\bullet$}\vrule\quad \parbox[c]{10cm}{\vspace{6pt}\color[RGB]{20, 20, 90}\raggedright\sffamily #2\par}\\[-2pt]
+}
+
 
 \title{Value at Risk}
 \author{Benjamin Shearlock}
@@ -30,7 +40,27 @@
 This is going to be where my abstract goes. I am looking forward to writing about value at risk in this Abstract.
 
 \section{Timeline}
-Due to unfortunate circumstances, I've had rough delays to the start of this Project, so Weeks 1-3 will be noted as being a vague learning of the fundamentals behind Value at Risk. I will express this and what I hopefully plan to accomplish with the Project in the timeline below. In the first term, I want to create a working program to compute Value at Risk for small portfolios, that has a serviceable GUI that can be expanded on later. I will also make sure to have amply researched about back-testing and how to incorporate it into my program in some capacity. 
+Due to unfortunate circumstances, I've had rough delays to the start of this Project, so Weeks 1-3 will be noted as being a vague learning of the fundamentals behind Value at Risk. I will express this and what I hopefully plan to accomplish with the Project in the timeline below. In the first term, I want to research and create a working program to compute Value at Risk for small portfolios, that has a serviceable GUI that can be expanded on later. I will also make sure to have amply researched about back-testing and how to incorporate it into my program in some capacity. For the second term, I will research and implement applying Value at Risk for a portfolio of derivatives, as well as looking into using the Monte Carlo simulation and allowing for the computation of all this with as many stocks as necessary. I will finalise the GUI and plan to look into completing some of the extensions provided for the project, however this will depend on the overall developmental scope of the project at the time, so they will not be specified here.
+
+\subsection{Term 1}
+\vspace{-2\baselineskip}
+\begin{table}[H]
+  \centering
+  \color{black}
+  \begin{longtable}{p{1\linewidth}}
+      \endfirsthead
+      \endhead
+      \ytl{Weeks 1-3}{
+        \textbf{Project Research}
+          \vspace{8pt}
+          \begin{itemize}
+              \item Research Value at Risk
+              \item Research best coding language to use
+              \item Familiarize myself with LaTeX and prepare IDE \& Git for Project specified use
+          \end{itemize}
+      } 
+  \end{longtable}
+  \end{table}
 
 \section{Key Risks}
 I'm going to be using lots of Subsections to talk about the different risks I have worked out...
