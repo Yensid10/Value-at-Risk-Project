@@ -7,8 +7,11 @@
 \usepackage{url}
 
 \newcommand\ytl[2]{
-    \parbox[b]{12em}{\hfill{\color{cyan}\bfseries\sffamily #1}~$\cdots\cdots$~}\makebox[0pt][c]{$\bullet$}\vrule\quad \parbox[c]{10cm}{\vspace{6pt}\color[RGB]{20, 20, 90}\raggedright\sffamily #2\par}\\[-2pt]
+    \parbox[b]{12em}{\hfill{\color{cyan}\bfseries\sffamily #1}~$\cdots\cdots$~}\makebox[0pt][c]{$\bullet$}\vrule\quad
+    \parbox[c]{10cm}{\vspace{6pt}\color[RGB]{20, 20, 90}\raggedright\sffamily #2\par}
+    \\[-2pt]
 }
+
 
 
 \title{Value at Risk}
@@ -51,6 +54,7 @@ Due to unfortunate circumstances, I've had rough delays to the start of this Pro
   \begin{longtable}{p{1\linewidth}}
     \endfirsthead
     \endhead
+    \hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt}
     \ytl{Weeks 1-3}{
       \textbf{Project Research}
       \vspace{8pt}
@@ -59,49 +63,44 @@ Due to unfortunate circumstances, I've had rough delays to the start of this Pro
           \item Research best coding language to use (Python)
           \item Familiarize myself with LaTeX and prepare IDE \& Git for Project specified use
       \end{itemize}
-    }
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt}
     \ytl{Week 4}{
       \textbf{Finalize Plan and Start Coding}
-      \vspace{8pt}
       \begin{itemize}
           \item Complete Project Plan
           \item Continue researching VaR and Python
           \item Begin project coding
       \end{itemize}
-    } 
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt}
     \ytl{Week 5-7}{
-      \textbf{Coding and Data Preparation}
-      \vspace{8pt}
+      \textbf{Coding and Data Preparation}      
       \begin{itemize}
           \item Continue to work on the VaR program (No GUI)
           \item Start collecting and organizing sample data for small portfolios so it can be used by the program
           \item Finalizing understanding of the two computational methods needed, this being model-building and historical simulation
       \end{itemize}
-    } 
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt}
     \ytl{Week 8}{
-      \textbf{Back-Testing Research}
-      \vspace{8pt}
+      \textbf{Back-Testing Research \& Implementation}      
       \begin{itemize}
           \item Investigate methods and techniques for VaR back-testing
           \item Start integrating back-testing into the project
       \end{itemize}
-    } 
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt}
     \ytl{Week 9-10}{
-      \textbf{GUI Development}
-      \vspace{8pt}
+      \textbf{GUI Development}      
       \begin{itemize}
           \item Initiate the development of the GUI
           \item Ensure the GUI is robust for its current task as well as expandable for future enhancements
       \end{itemize}
-    } 
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt}
     \ytl{Week 11}{
-      \textbf{Interim Report and Presentation Preparation}
-      \vspace{8pt}
+      \textbf{Interim Report and Presentation Preparation}      
       \begin{itemize}
           \item Fine-tune programs and report so they are at a satisfactory level, will also allow for easier preparation for the interim presentation 
           \item Prepare for the interim presentation 
       \end{itemize}
-    } 
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt}
   \end{longtable}
 \end{table}
 
@@ -113,46 +112,44 @@ Due to unfortunate circumstances, I've had rough delays to the start of this Pro
   \begin{longtable}{p{1\linewidth}}
     \endfirsthead
     \endhead
+    \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt}
     \ytl{Weeks 1-2}{
-      \textbf{Refine Project Objectives}
+      \textbf{Reflection and Research}
       \vspace{8pt}
       \begin{itemize}
-          \item Reevaluate and adjust project objectives as necessary
-          \item Ensure alignment with the overarching project goals
+          \item Spend time to reflect on the progress of the project so far, make any changes that I think are warranted after having the winter break time to think about
+          \item Research the Monte Carlo simulation method for VaR, as well as how I could start implementing derivatives as portfolios into the project
       \end{itemize}
-    } 
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt} 
     \ytl{Week 3-4}{
-      \textbf{Visualization Implementation}
-      \vspace{8pt}
+      \textbf{Start Implementing New Features}
+  
       \begin{itemize}
-          \item Develop visualizations for displaying VaR results
-          \item Enhance the user interface with relevant charts
+          \item Start implementing the Monte Carlo simulation method and continue derivative implementation
+          \item Start researching Eigen \& Cholesky decomposition to allow for however many stocks are needed within a portfolio
       \end{itemize}
-    } 
-    \ytl{Week 5-6}{
-      \textbf{Software Engineering Practices}
-      \vspace{8pt}
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt} 
+    \ytl{Week 5-7}{
+      \textbf{GUI Finalisation}
       \begin{itemize}
-          \item Encapsulate the project code into a well-structured software engine
-          \item Implement interfaces for compatibility with chemistry programs
+          \item Decide on the final visual product I want to represent with the GUI and start implementing it (if progress on this needs to continue into the next period, then it will be done so)
+          \item Set the program up to work portably/allowing it to work on mobile OS's as well as different desktop OS's
       \end{itemize}
-    } 
-    \ytl{Week 7-8}{
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt} 
+    \ytl{Week 8-9}{
       \textbf{Extend Project Scope (if time permits)}
-      \vspace{8pt}
       \begin{itemize}
-          \item Explore additional features or enhancements for the project
-          \item Evaluate the overall feasibility of project extensions
+          \item Explore additional features or enhancements for the project, possibly decided upon at the start of Term 2
+          \item Implement as many as can be appropriately managed, with all additional time spent within this period being used to ensure the project is at its most refined state
       \end{itemize}
-    } 
-    \ytl{Week 9-10}{
-      \textbf{Final Report and Viva Preparation}
-      \vspace{8pt}
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt} 
+    \ytl{Week 10-11}{
+      \textbf{Perfect Final Report}
       \begin{itemize}
-          \item Compile final project results and findings
-          \item Prepare for the final report submission and viva voce presentation
+          \item Make sure the program has been achieved to the best of its ability
+          \item Finalise and perfect the final report
       \end{itemize}
-    } 
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt} 
   \end{longtable}
 \end{table}
 
