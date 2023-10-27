@@ -11,3 +11,6 @@ I have been able to get Latex working for my Documentation, after having various
 I installed not working with VSCode. I finally used Latex Live and was able to get it working, thus have created 
 a test document to ensure it works. I have started researching and acquiring sources for my project, and will need 
 to ensure I complete the Project Plan accordingly.
+
+17/10/23 - Fixing my DIARY
+Due to illnesses (that are still ongoing), I have not been able to properly update this diary to a satisfactory level. When my illness has rescinded, I will be able to start continously updating this diary with my projects progress...
