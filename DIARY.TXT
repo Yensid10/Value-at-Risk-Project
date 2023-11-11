@@ -13,4 +13,7 @@ a test document to ensure it works. I have started researching and acquiring sou
 to ensure I complete the Project Plan accordingly.
 
 17/10/23 - Fixing my DIARY
-Due to illnesses (that are still ongoing), I have not been able to properly update this diary to a satisfactory level. When my illness has rescinded, I will be able to start continously updating this diary with my projects progress...
+Due to illnesses (that are still ongoing), I have not been able to properly update this diary to a satisfactory level. When my illness has rescinded, I will be able to start continuously updating this diary with my projects progress...
+
+11/11/23 - Finally being able to get on with working
+Have finally gotten illnesses and emotional issues under control, and have been able to start working on my project. I've used the sources I originally found to help me understand VaR for historical simulation and variance covariance model methods, whilst also using trial and error to create two test programs to test the methods. I need to start on the documentation for the project tomorrow with creating the latex for it and making sure to document my progress in understanding var as well.
