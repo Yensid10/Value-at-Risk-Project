@@ -1,0 +1,278 @@
+\documentclass{article}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{listings}
+
+\newcommand\ytl[2]{
+    \parbox[b]{12em}{\hfill{\color{cyan}\bfseries\sffamily #1}~$\cdots\cdots$~}\makebox[0pt][c]{$\bullet$}\vrule\quad
+    \parbox[c]{10cm}{\vspace{6pt}\color[RGB]{20, 20, 90}\raggedright\sffamily #2\par}
+    \\[-2pt]
+}
+
+
+
+\title{Creating Software for Value at Risk}
+\author{Benjamin Shearlock}
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{center}
+    \vspace*{1cm}
+    {\LARGE \textbf{Creating Software for Value at Risk} \par} 
+    \vspace{1.5cm}
+    {\Large \textit{Interim Report} \par}
+    \vspace{0.5cm}
+    {\Large BSc Final Year Project \par}
+    \vspace{2cm}
+    {\large \textbf{Author} \par}
+    {\large Benjamin Shearlock \par}
+    \vspace{2cm}
+    {\large \textbf{Supervisor} \par}
+    {\large Dr. Volodya Vovk \par}
+    \vfill
+    {\large Department of Computer Science \par}
+    {\large Royal Holloway, University of London \par}
+  \end{center}
+\end{titlepage}
+
+\setlength{\parindent}{0pt}
+
+\section*{Declaration}
+This is my own work etc etc
+
+\begin{itemize}
+  \item word count
+  \item my name
+  \item submission date
+  \item signature
+  \item etc
+\end{itemize}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Abstract}
+In the realm of financial risk management, understanding and evaluating the level of risk associated with any investment or portfolio is of extremely high importance. Perhaps the most universally regarded metric used for this purpose is Value at Risk (VaR). VaR provides a quantitative estimate of the potential losses that a portfolio may incur over a certain period of time (specified time horizon) at a given confidence level. \\
+
+Original widespread use of VaR came about in the early 1990s, the concept first being introduced by J.P. Morgan in 1994, since it helped provide an estimate of the maximum loss an investor is willing to accept for any given investment. Its historical roots can be traced back to the financial industry's increasing need for a standardized and comprehensive measure of risk following the 1987 stock market crash, so they sought a comprehensive way to assess risk in complex portfolios [\ref{ref3}]. \\
+
+Mathematically, VaR is expressed as follows:
+\begin{equation}
+VaR(N, X) = -\text{Percentile}(L, 1 - X)
+\end{equation}
+Where:
+\begin{align*}
+N & : \text{Time horizon (in days)} \\
+X & : \text{Confidence level (in percentage)} \\
+L & : \text{Loss distribution over } N \text{ days}
+\end{align*}
+
+This formula captures the loss at the \((100-X)\)th percentile of the loss distribution over the specified time horizon [\ref{ref6}]. \\
+
+VaR can be mathematically computed through various methods, each with its own strengths and limitations. The most common approaches include the historical simulation method, parametric method, model building method and Monte Carlo simulation [\ref{ref1}], to list a few. For historical simulation, past data is used to estimate future risk by examining the historical returns of an asset or portfolio, while model building employs mathematical models to predict portfolio performance. The choice of algorithm depends on data availability, computational resources, and specific requirements. \\
+
+To implement VaR calculations, various pieces of software are essential. In this project, I will be utilising Visual Studio Code (VSCode) as the integrated development environment (IDE) and Python for its rich ecosystem of libraries. Python libraries like NumPy, Matplotlib, and Kivy will be invaluable for data manipulation, visualisation, and user interface design [\ref{ref9}]. \\
+
+My inaugural proof of concept program will be created to visually demonstrate VaR calculations for  two initial methods, these being historical simulation and model building techniques to estimate VaR for a sample portfolio. Historical simulation would involve collecting historical data and computing VaR based on past performance (can involve acquiring stock data through an API), while model building would use a predefined model to forecast future losses. Visualisation tools like Matplotlib can help in presenting the results graphically, enabling me to generate informative charts and graphs. NumPy will facilitate data manipulation and efficient mathematical operations [\ref{ref10}]. Additionally, Kivy, a Python framework for developing multi-touch applications, will be used to create the interfaces for the visual representation of VaR, as well as giving it the option to possibly be viewed on other devices. \\
+
+Later on into the project, if there is enough time, I think it may be worth exploring some more advanced topics like the variance-covariance of returns, specifically employing GARCH (Generalized Autoregressive Conditional Heteroscedasticity) models. GARCH models provide a more nuanced understanding of volatility and can enhance the accuracy of VaR estimates [\ref{ref6}]. \\
+
+The objective of my project is to gain a deeper understanding of VaR, develop a functional program to calculate and visualise it, and potentially extend the research to incorporate more advanced risk management techniques if possible. This project is a stepping stone towards a deeper understanding of the risk side of finances and will contribute to enhancing the knowledge and skills necessary for effective financial decision-making, since this is not a topic that I have delved much into before, but I have aways been very interested in learning more about it. This gives me a fantastic opportunity to learn about the financial sector, as well as create something that is applicable and useful to real life. \\
+
+
+\section{Specification}
+
+
+\section{Chapter 1 - Introduction}
+
+\subsection{What is VaR?}
+
+\subsection{Aims and Goals}
+
+\subsection{Milestone Plan}
+Due to unfortunate circumstances, I've had rough delays to the start of this Project, so Weeks 1-3 will be noted as being a vague learning of the fundamentals behind Value at Risk. I will express this and what I hopefully plan to accomplish with the Project in the timeline below. In the first term, I want to research and create a working program to compute Value at Risk for small portfolios, that has a serviceable GUI that can be expanded on later. I will also make sure to have amply researched about back-testing and how to incorporate it into my program in some capacity. For the second term, I will research and implement applying Value at Risk for a portfolio of derivatives, as well as looking into using the Monte Carlo simulation and allowing for the computation of all this with as many stocks as necessary. I will finalise the GUI and plan to look into completing some of the extensions provided for the project, however this will depend on the overall developmental scope of the project at the time, so they will not be specified here.
+
+\vspace{-2\baselineskip}
+\begin{table}[H]
+  \centering
+  \color{black}
+  \begin{longtable}{p{1\linewidth}}
+    \endfirsthead
+    \endhead
+    \hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt}
+    \ytl{Weeks 1-3}{
+      \textbf{Project Research}
+      \vspace{8pt}
+      \begin{itemize}
+          \item Research the fundamentals of Value at Risk (VaR)
+          \item Research best coding language to use (Python)
+          \item Familiarize myself with LaTeX and prepare IDE \& Git for Project specified use
+      \end{itemize}
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt}
+    \ytl{Week 4}{
+      \textbf{Finalize Plan and Start Coding}
+      \begin{itemize}
+          \item Complete Project Plan
+          \item Continue researching VaR and Python
+          \item Begin project coding
+      \end{itemize}
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt}
+    \ytl{Week 5-7}{
+      \textbf{Coding and Data Preparation}      
+      \begin{itemize}
+          \item Continue to work on the VaR program (No GUI)
+          \item Start collecting and organizing sample data for small portfolios so it can be used by the program
+          \item Finalizing understanding of the two computational methods needed, this being model-building and historical simulation
+      \end{itemize}
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt}
+    \ytl{Week 8}{
+      \textbf{Back-Testing Research \& Implementation}      
+      \begin{itemize}
+          \item Investigate methods and techniques for VaR back-testing
+          \item Start integrating back-testing into the project
+      \end{itemize}
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt}
+    \ytl{Week 9-10}{
+      \textbf{GUI Development}      
+      \begin{itemize}
+          \item Initiate the development of the GUI
+          \item Ensure the GUI is robust for its current task as well as expandable for future enhancements
+      \end{itemize}
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt}
+    \ytl{Week 11}{
+      \textbf{Interim Report and Presentation Preparation}      
+      \begin{itemize}
+          \item Fine-tune programs and report so they are at a satisfactory level, will also allow for easier preparation for the interim presentation 
+          \item Prepare for the interim presentation 
+      \end{itemize}
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt}
+  \end{longtable}
+\end{table}
+
+\vspace{-2\baselineskip}
+\begin{table}[H]
+  \centering
+  \color{black}
+  \begin{longtable}{p{1\linewidth}}
+    \endfirsthead
+    \endhead
+    \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt}
+    \ytl{Weeks 1-2}{
+      \textbf{Reflection and Research}
+      \vspace{8pt}
+      \begin{itemize}
+          \item Spend time to reflect on the progress of the project so far, make any changes that I think are warranted after having the winter break time to think about
+          \item Research the Monte Carlo simulation method for VaR, as well as how I could start implementing derivatives as portfolios into the project
+      \end{itemize}
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt} 
+    \ytl{Week 3-4}{
+      \textbf{Start Implementing New Features}
+  
+      \begin{itemize}
+          \item Start implementing the Monte Carlo simulation method and continue derivative implementation
+          \item Start researching Eigen \& Cholesky decomposition to allow for however many stocks are needed within a portfolio
+      \end{itemize}
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt} 
+    \ytl{Week 5-7}{
+      \textbf{GUI Finalisation}
+      \begin{itemize}
+          \item Decide on the final visual product I want to represent with the GUI and start implementing it (if progress on this needs to continue into the next period, then it will be done so)
+          \item Set the program up to work portably/allowing it to work on mobile OS's as well as different desktop OS's
+      \end{itemize}
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt} 
+    \ytl{Week 8-9}{
+      \textbf{Extend Project Scope (if time permits)}
+      \begin{itemize}
+          \item Explore additional features or enhancements for the project, possibly decided upon at the start of Term 2
+          \item Implement as many as can be appropriately managed, with all additional time spent within this period being used to ensure the project is at its most refined state
+      \end{itemize}
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt} 
+    \ytl{Week 10-11}{
+      \textbf{Perfect Final Report}
+      \begin{itemize}
+          \item Make sure the program has been achieved to the best of its ability
+          \item Finalise and perfect the final report
+      \end{itemize}
+    } \vskip-19pt\hspace*{\dimexpr\linewidth-0.721\linewidth}\rule{0.7\linewidth}{0.4pt} 
+  \end{longtable}
+\end{table}
+
+
+\section{Chapter 2 - Understanding VaR}
+
+\subsection{Historical Simulation}
+
+\subsection{Model Building (Variance-Covariance)}
+
+\subsection{Coding VaR Methods}
+
+\subsection{Back Testing}
+
+
+\section{Chapter 3 - Graphical User Interface}
+
+\subsection{What is Kivy?}
+
+\subsection{Conceptualisation of Initial Design Ideas}
+
+\subsection{Initial GUI Creation}
+
+\subsection{Testing Current Implementation}
+
+
+\section{Chapter 4 - Evaluation}
+
+\subsection{Current Work}
+
+\subsection{Future Work}
+
+\section{Bibliography}
+\begin{small}
+\begin{enumerate}
+  \item \label{ref1} Alexander, C. (2008). *Market Risk Analysis: Value-at-Risk Models.* Hoboken, NJ: Wiley. [Online] Available at: \url{https://ebookcentral-proquest-com.ezproxy01.rhul.ac.uk/lib/rhul/reader.action?docID=416450}.
+  \\\textit{This book covers various aspects that I want to approach in this project, such as historical simulation, Monte Carlo simulation and various forms of testing that could be highly useful for my project.}
+  
+  \item \label{ref2} Arbuckle, D. (2017). *Daniel Arbuckle’s Mastering Python: Build Powerful Python Applications.* Birmingham, England: Packt. [Online] Available at: \url{https://learning.oreilly.com/library/view/daniel-arbuckles-mastering/9781787283695/?ar=}.
+  \\\textit{I chose this reference as it helps with python packaging, being able to turn a python code and all its GUI and libraries into a single executable file, which is something I want to be able to do for this project.}
+
+  \item \label{ref3} Choudhry, M. (2006). *An Introduction to Value-at-Risk.* Chichester: John Wiley \& Sons Limited. [Online] Available at: \\ \url{https://learning.oreilly.com/library/view/an-introduction-to/9780470017579/}.
+  \\\textit{Covers similar topics to the first reference, but seems to go into more detail on specific issues that I may need to address in this project.}
+  
+  \item \label{ref4} Duffie, D. and Pan, J. (2019). *An Overview of Value at Risk.* [Online] Available at: \url{http://web.mit.edu/people/junpan/ddjp.pdf}.
+  \\\textit{A much shorter reference, it is a paper that covers the basics of Value at Risk, which I will be using to help me understand the fundamentals of the topic since I have been able to follow it better then the other references.}
+  
+  \item \label{ref5} Föllmer, H. and Schied, A. (2016). *Stochastic Finance: An Introduction in Discrete Time.* Berlin: de Gruyter. [PDF]
+  \\\textit{A recommended reference from my supervisor, it is a book that covers higher level concepts relating to my project but also provides an overview of stochastic finance in general, which I have seen to be useful in understanding the topic.}
+  
+  \item \label{ref6} Hull, J.C. (2008). *Options, Futures, and Other Derivatives.* Upper Saddle River, NJ: Prentice Hall. [PDF]
+  \\\textit{This is my main reference for the project, as it is the main textbook suggested. It has a relevant chapter on Value at Risk, which explores many of the different aspects that I will need to look into for this project.}
+
+  \item \label{ref7} Pritsker, M. (1997). "Evaluating Value at Risk Methodologies: Accuracy versus Computational Time." *Journal of Financial Services Research* 12: 201-242. [Online] Available at: \url{https://doi.org/10.1023/A:1007978820465}.
+  \\\textit{Another short reference, this is a paper that compares the accuracy and computational time of various Value at Risk methodologies, which I will be using to help me understand the different methodologies and how I can apply them to my project in the most efficient manner. }
+
+  \item \label{ref8} Raman, K. (2015). *Mastering Python Data Visualization: Generate Effective Results in a Variety of Visually Appealing Charts Using the Plotting Packages in Python.* Birmingham: Packt Publishing Limited. [Online] Available at: \url{https://learning.oreilly.com/library/view/mastering-python-data/9781783988327/?ar=}.
+  \\\textit{This reference covers various aspects of data visualisation, which I will be using to help me understand how to best display important information in a visually appealing way for my project.}
+
+  \item \label{ref9} Ulloa, R. (2015). *Kivy - Interactive Applications and Games in Python - Second Edition.* Packt Publishing. [Online] Available at: \url{https://learning.oreilly.com/library/view/kivy-interactive/9781785286926/?ar=}.
+  \\\textit{This reference is not being used for its content on game development, rather Kivy is a framework that can help create a GUI that works on both desktop operating systems as well as mobile operating systems, which I think I would like to explore the possibility of when developing the application}
+
+  \item \label{ref10} Weiming, J.M. (2015). *Mastering Python for Finance: Understand, Design, and Implement State-of-the-Art Mathematical and Statistical Applications Used in Finance with Python.* Birmingham, England: Packt Publishing. [Online] Available at: \url{https://learning.oreilly.com/library/view/mastering-python-for/9781784394516/}.
+  \\\textit{This reference covers various ways of handling financial data within python, which I will ensure to help me understand how to best handle the data I will be using within my project.}
+\end{enumerate}
+\end{small}
+
+\section{Planning and Timescale}
+
+\section{Appendix - Diary}
+
+\end{document}
