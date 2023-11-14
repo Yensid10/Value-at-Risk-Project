@@ -2,15 +2,10 @@ FINAL YEAR PROJECT DIARY
 -------------------------
 
 28/9/23 - Start of Project
-Today, I am starting this project. I have finally fully recovered from a health issue I was having at the start 
-of term, but I am still dealing with an ongoing emotional issues that I will have to push through to complete
-this project successfully (heartbreak).
+Today, I am starting this project. I have finally fully recovered from a health issue I was having at the start of term, but I am still dealing with an ongoing emotional issues that I will have to push through to complete this project successfully (heartbreak).
 
 01/10/23 - Setting Up LaTeX
-I have been able to get Latex working for my Documentation, after having various problems with the version of LaTeX
-I installed not working with VSCode. I finally used Latex Live and was able to get it working, thus have created 
-a test document to ensure it works. I have started researching and acquiring sources for my project, and will need 
-to ensure I complete the Project Plan accordingly.
+I have been able to get Latex working for my Documentation, after having various problems with the version of LaTeX I installed not working with VSCode. I finally used Latex Live and was able to get it working, thus have created a test document to ensure it works. I have started researching and acquiring sources for my project, and will need to ensure I complete the Project Plan accordingly.
 
 17/10/23 - Fixing my DIARY
 Due to illnesses (that are still ongoing), I have not been able to properly update this diary to a satisfactory level. When my illness has rescinded, I will be able to start continuously updating this diary with my projects progress...
@@ -21,8 +16,8 @@ Have finally gotten illnesses and emotional issues under control, and have been 
 12/11/23 - Setting Up Documentation
 I copied over my documentation for the Project Plan, and used it as a baseline for me to establish what I need to be in my interim report. Taking brief reference from an email that Argyrios sent, and combining it with what I already had from my previous plan (timeline), as well as making sure I include everything needed from the mark scheme, I created the contents and headings for my documentation going forward, so I know what I need to add into each section up until the completion of the interim report. I now need to start populating the information before I continue to progress with the project too much, however for this week in my original plan I was supposed to research and understand back testing, however I think I will wait slightly so that I can catch up on documentation, since I really should have been documenting my testing on getting the VaR methods to work in the first place, so I will make sure to complete the prior sections (I think I'll skip on the introduction documentation at the moment too so I can focus more on getting the documentation done for the code, so that I can then progress with more coding).
 
-12/11/23 - Back-testing
+13/11/23 - Back-testing
 I said that I would do more documentation next, but I wanted to briefly read on back testing. Upon doing so, I saw that it didn't look to challenging, so I thought I'd quickly try and implement it for historical simulation. I was able to do so, which means I should be able to adapt it for the model method tomorrow quite easily, I also found that the back testing seemed to think my VaR calculated was accurate at the 5% level, but when changing it to 1% level it was not as accurate, so I will need to look into this further tomorrow as well, see if its to do with assuming that my returns are normally distributed, or if its something else.
 
-13/11/23 - Combined Program for Both Methods, for Single Stock
+14/11/23 - Combined Program for Both Methods, for Single Stock
 At the start of the day, I implemented the back testing for the model building method, tested it to see if it worked, and saw that it would mainly still fail the back testing. I don't really know what I'm supposed to do with the back testing at the moment, but I will research more into it in the future. I then decided to make a program that I could input all the relevant details into to get VaR results, only accounting for a portfolio of just one stock type, I wanted to have it so the user could choose their one stock from a choice of multiple stocks, so I displayed the FTSE100, let the user choose that and input their portfolio amount, as well as other values, and at the end they would chose what VaR method they would want to use to calculate the VaR. The program displays the VaR and back tests it afterwards, but almost 90% of the time it would fail the back test. I assume this is due to these methods not being the most robust for calculating VaR, or for I'm performing the back testing wrong, but regardless everything else in the program seems to work, and this program can help me in the future when I implement a GUI, my initial one will most likely only handle one stock type, so I can use this program as a base for that.
