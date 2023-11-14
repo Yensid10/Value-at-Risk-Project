@@ -99,36 +99,23 @@ closeDiffs = stock['Adj Close'].pct_change().dropna()
 if VaRType == "H" or VaRType == "h":
     # Assuming that N-days VaR = 1-day VaR * sqrt(N)
     print("VaR is: £" + str(round(np.percentile(closeDiffs, rlPercent)*portfolio*-1*np.sqrt(timeHori), 2)))
-    
-    count = 0
-    adjust = int(len(stock)/10)
-    for i in range(1, len(stock) - adjust - 1):
-        backTest = stock['Adj Close'].pct_change()[i:i+adjust]
-        VaR = np.percentile(backTest, rlPercent)*np.sqrt(timeHori)
-        nextDay = stock['Adj Close'].pct_change()[i+adjust:i+adjust+1].values[0]
-        if VaR > (nextDay*np.sqrt(timeHori)):
-            # print("VaR: " + str(round(VaR, 3)) + " Next Day: " + str(round(nextDay*portfolio*np.sqrt(timeHori), 3)))
-            count += 1
-    failureRate = round(count/(len(stock)-adjust)*100, 1)
-    if failureRate < rlPercent:
-        print("Back Test: PASSED with " + str(failureRate) + "% failure rate")
-    else:
-        print("Back Test: FAILED with " + str(failureRate) + "% failure rate")
-        
 else:
     print("VaR is: £" + str(round(VaRCalc(portfolio, rlPercent/100, np.mean(closeDiffs), np.std(closeDiffs))*np.sqrt(timeHori), 2)))
     
-    count = 0
-    adjust = int(len(stock)/10)
-    for i in range(1, len(stock) - adjust - 1):
-        backTest = stock['Adj Close'].pct_change()[i:i+adjust]
-        VaR = VaRCalc(portfolio, rlPercent/100, np.mean(backTest), np.std(backTest))*np.sqrt(timeHori)
-        nextDay = stock['Adj Close'].pct_change()[i+adjust:i+adjust+1].values[0]*np.sqrt(timeHori)
-        if VaR*-1 > nextDay*portfolio:
-            count += 1
-    failureRate = round(count/(len(stock)-adjust)*100, 1)
-    if failureRate < rlPercent:
-        print("Back Test: PASSED with " + str(failureRate) + "% failure rate")
+count = 0
+adjust = int(len(stock)/10)
+for i in range(1, len(stock) - adjust - 1):
+    backTest = stock['Adj Close'].pct_change()[i:i+adjust]
+    if VaRType == "H" or VaRType == "h":
+        VaR = np.percentile(backTest, rlPercent)*np.sqrt(timeHori)*portfolio
     else:
-        print("Back Test: FAILED with " + str(failureRate) + "% failure rate")
+        VaR = VaRCalc(portfolio, rlPercent/100, np.mean(backTest), np.std(backTest))*np.sqrt(timeHori)*-1        
+    nextDay = stock['Adj Close'].pct_change()[i+adjust:i+adjust+1].values[0]*np.sqrt(timeHori)*portfolio
+    if VaR > nextDay:
+        count += 1
+failureRate = round(count/(len(stock)-adjust)*100, 1)
+if failureRate < rlPercent:
+    print("Back Test: PASSED with " + str(failureRate) + "% failure rate")
+else:
+    print("Back Test: FAILED with " + str(failureRate) + "% failure rate")
     
