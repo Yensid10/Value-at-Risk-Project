@@ -5,6 +5,7 @@ import yfinance as yf
 
 print("Model Building VaR\n")
 def dailyVar(P, rl, mean, sD):
+    # print(-P*norm.ppf(rl, mean, sD))
     return P - P*(norm.ppf(rl, mean, sD) + 1)
 
 if __name__ == "__main__":

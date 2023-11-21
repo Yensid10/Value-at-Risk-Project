@@ -1,9 +1,11 @@
 import datetime as dt
 import time
 import numpy as np
-from scipy.stats import norm
+from scipy.stats import norm, binom
 import yfinance as yf
 import pandas as pd
+
+
 
 ftse100 = pd.read_html('https://en.wikipedia.org/wiki/FTSE_100_Index')[4]
 
@@ -113,9 +115,12 @@ for i in range(1, len(stock) - adjust - 1):
     nextDay = stock['Adj Close'].pct_change()[i+adjust:i+adjust+1].values[0]*np.sqrt(timeHori)*portfolio
     if VaR > nextDay:
         count += 1
-failureRate = round(count/(len(stock)-adjust)*100, 1)
-if failureRate < rlPercent:
-    print("Back Test: PASSED with " + str(failureRate) + "% failure rate")
+        
+# failureRate = round(count/(len(stock)-adjust)*100, 1)
+pValue = binom.cdf((len(stock)-adjust)-count,len(stock)-adjust,1-rlPercent/100)
+
+if pValue > rlPercent/100:
+    print("Back Test: PASSED with " + str(round(pValue*100, 0)) + "% statistical significance level (p-value)")
 else:
-    print("Back Test: FAILED with " + str(failureRate) + "% failure rate")
+    print("Back Test: FAILED with " + str(round(pValue*100, 0)) + "% statistical significance level (p-value)")
     
