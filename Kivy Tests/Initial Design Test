@@ -5,10 +5,24 @@ from kivy.uix.textinput import TextInput
 from kivy.properties import ObjectProperty
 from kivy.uix.button import Button
 
+
+import datetime as dt
+import time
+import numpy as np
+from scipy.stats import norm, binom
+import yfinance as yf
+import pandas as pd
+ftse100 = pd.read_html('https://en.wikipedia.org/wiki/FTSE_100_Index')[4]
+
 class ApplicationView(BoxLayout):
     # Declare ObjectProperty variables for the stock list and user inputs
     stockList = ObjectProperty(None)
     userInputs = ObjectProperty(None)
+    currentStock = ""
+    portfolio = 0
+    rlPercent = 0
+    timeHori = 0
+    simMethod = ""
 
     def __init__(self, **kwargs):
         # Call the parent class's constructor
@@ -19,16 +33,28 @@ class ApplicationView(BoxLayout):
 
     def populateList(self):
     # Add 100 buttons to the stock list
-        for i in range(100):
-            button = Button(text=f'Stock {i + 1}', size_hint_y=None, height=30)
-            button.bind(on_release=lambda btn: setattr(self.currentStock, 'text', "Stock: " + btn.text)) # Set the current stock label to the text of the button that was pressed
+        for i in range(len(ftse100)):
+            button = Button(text=ftse100['Company'][i], size_hint_y=None, height=30, font_size=20)
+            button.bind(on_release=lambda btn, i=i: (setattr(self.currentStock, 'text', "Stock: " + ftse100['Ticker'][i]), setattr(self, 'currentTicker', str(ftse100['Ticker'][i]))))
             self.stockList.add_widget(button)
 
     def populateInputs(self):
-        # Add 20 pairs of labels and text inputs to the user inputs, as an example before I implement proper inputs
-        for i in range(20):
-            self.userInputs.add_widget(Label(text=f'Input {i + 1}', size_hint_y=None, height=30, font_size=25))
-            self.userInputs.add_widget(TextInput(size_hint_y=None, height=30))
+        # Create a dictionary of variable names and their corresponding displayed texts
+        variables = {
+            'portfolio': 'Enter Portfolio Value (£): ',
+            'rlPercent': 'Enter Risk Level Percentage: ',
+            'timeHori': 'Enter Time Horizon: '
+            # 'simMethod': 'Enter the VaR :'
+        }
+        for varName, label in variables.items():
+            self.userInputs.add_widget(Label(text=label, size_hint_y=None, height=30, font_size=20))
+            centeredLayout = BoxLayout(size_hint_y=None, height=35, padding=[self.userInputs.width/1.35, 0])
+            text = TextInput(size_hint_x=None, width=self.userInputs.width*3, font_size=18)
+            text.bind(on_text_validate=lambda instance, varName=varName: setattr(self, varName, instance.text))
+            centeredLayout.add_widget(text)
+            self.userInputs.add_widget(centeredLayout)
+        self.userInputs.add_widget(Label(text='[u]Current Info Given[/u]', size_hint_y=None, height=30, font_size=20, markup=True))
+            
 
 class IDTApp(App):
     def build(self):
