@@ -3,6 +3,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.properties import ObjectProperty
+from kivy.uix.button import Button
 
 class ApplicationView(BoxLayout):
     # Declare ObjectProperty variables for the stock list and user inputs
@@ -17,9 +18,11 @@ class ApplicationView(BoxLayout):
         self.populateInputs()
 
     def populateList(self):
-        # Add 100 labels to the stock list, will be updated to include FTSE 100 stocks
+    # Add 100 buttons to the stock list
         for i in range(100):
-            self.stockList.add_widget(Label(text=f'Stock {i + 1}', size_hint_y=None, height=30, font_size=25))
+            button = Button(text=f'Stock {i + 1}', size_hint_y=None, height=30)
+            button.bind(on_release=lambda btn: setattr(self.currentStock, 'text', "Stock: " + btn.text)) # Set the current stock label to the text of the button that was pressed
+            self.stockList.add_widget(button)
 
     def populateInputs(self):
         # Add 20 pairs of labels and text inputs to the user inputs, as an example before I implement proper inputs
