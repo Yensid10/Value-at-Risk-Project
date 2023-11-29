@@ -18,10 +18,10 @@ class ApplicationView(BoxLayout):
     # Declare ObjectProperty variables for the stock list and user inputs
     stockList = ObjectProperty(None)
     userInputs = ObjectProperty(None)
-    currentStock = ""
-    portfolio = 0
-    rlPercent = 0
-    timeHori = 0
+    # currentInfo = ObjectProperty(None)
+    portfolio = "0"
+    rlPercent = "0"
+    timeHori = "0"
     simMethod = ""
 
     def __init__(self, **kwargs):
@@ -37,8 +37,16 @@ class ApplicationView(BoxLayout):
             button = Button(text=ftse100['Company'][i], size_hint_y=None, height=30, font_size=20)
             button.bind(on_release=lambda btn, i=i: (setattr(self.currentStock, 'text', "Stock: " + ftse100['Ticker'][i]), setattr(self, 'currentTicker', str(ftse100['Ticker'][i]))))
             self.stockList.add_widget(button)
+        
+    # def updateInfo(self, current, varName):
+    #     setattr(self, varName, current.text)
+    #     self.currentInfo.text = "[u]Current Info Given[/u]\n" + \
+    #                             f"Portfolio Value: £{self.portfolio}\n" + \
+    #                             f"Risk Level Percentage: {self.rlPercent}%\n" + \
+    #                             f"Time Horizon: {self.timeHori} days"
 
     def populateInputs(self):
+        self.userInputs.clear_widgets()
         # Create a dictionary of variable names and their corresponding displayed texts
         variables = {
             'portfolio': 'Enter Portfolio Value (£): ',
@@ -48,12 +56,16 @@ class ApplicationView(BoxLayout):
         }
         for varName, label in variables.items():
             self.userInputs.add_widget(Label(text=label, size_hint_y=None, height=30, font_size=20))
-            centeredLayout = BoxLayout(size_hint_y=None, height=35, padding=[self.userInputs.width/1.35, 0])
-            text = TextInput(size_hint_x=None, width=self.userInputs.width*3, font_size=18)
-            text.bind(on_text_validate=lambda instance, varName=varName: setattr(self, varName, instance.text))
+            centeredLayout = BoxLayout(size_hint_y=None, height=35, padding=[80, 0])
+            text = TextInput(size_hint_x=None, width=275, font_size=18, multiline=False)
+            text.bind(on_text_validate=lambda current, varName=varName: (setattr(self, varName, current.text), self.populateInputs()))
             centeredLayout.add_widget(text)
             self.userInputs.add_widget(centeredLayout)
-        self.userInputs.add_widget(Label(text='[u]Current Info Given[/u]', size_hint_y=None, height=30, font_size=20, markup=True))
+        
+        
+        
+        self.userInputs.add_widget(Label(text="\n\n\n\n[u]Current Info Given[/u]\n" + f"Portfolio Value: £{self.portfolio}\n" + f"Risk Level Percentage: {self.rlPercent}%\n" + f"Time Horizon: {self.timeHori} day(s)", size_hint_y=None, height=10, markup=True, font_size=20, pos_hint={'center_x': 0.3}))
+
             
 
 class IDTApp(App):

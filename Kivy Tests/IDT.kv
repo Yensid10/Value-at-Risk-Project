@@ -4,6 +4,7 @@
     stockList: stockList
     userInputs: userInputs
     currentStock: currentStock
+    # currentInfo: currentInfo
     orientation: 'horizontal'
 
     BoxLayout:
@@ -29,9 +30,21 @@
         Label:
             id: currentStock
             size_hint: 1, None
-            height: 50
+            height: 42
             font_size: 25
             text: 'No Selected Stock'
+            color: 0, 0, 0, 1
+            canvas.before:
+                Color:
+                    rgba: 0.9, 0.9, 0.9, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                Color:
+                    rgba: 0, 0, 0, 1  # black
+                Line:
+                    rectangle: (self.x, self.y, self.width, self.height)
+                    width: 2
         ScrollView:
             GridLayout:
                 id: userInputs
@@ -39,6 +52,13 @@
                 size_hint_y: None
                 spacing: 5
                 height: self.minimum_height
+                # Label:
+                #     id: currentInfo
+                #     size_hint_y: None
+                #     height: 60
+                #     font_size: 20
+                #     markup: True
+                #     text: 'Current Info Given\n\n'            
         Label:
             size_hint_y: None
             height: 30
