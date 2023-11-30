@@ -39,10 +39,12 @@ class ApplicationView(BoxLayout):
             self.stockList.add_widget(button)
            
     def simMethodPressed(self, current):
+        self.simMethod = current.text
         if current.state == 'normal':
-            current.state = 'down'
-            self.simMethod = current.text
+            current.state = 'down'            
             self.populateInputs()
+
+            
 
             
     def createButtons(self):
@@ -69,6 +71,8 @@ class ApplicationView(BoxLayout):
 
     def populateInputs(self):
         self.userInputs.clear_widgets()
+        # print(self.simMethod)
+        self.userInputs.add_widget(Label(text="", size_hint_y=None, height=5, font_size=20)) #Adds a gap at the top
         # Create a dictionary of variable names and their corresponding displayed texts
         variables = {
             'portfolio': 'Enter Portfolio Value (£): ',

@@ -50,12 +50,18 @@
             size_hint_y: None
             spacing: 5
             height: 427
-            # canvas.before:
-            #     Color:
-            #         rgba: 0.5, 0.5, 0.5, 1
-            #     Rectangle:
-            #         pos: self.pos
-            #         size: self.size
+            canvas.before:
+                Color:
+                    rgba: 0.5, 0.5, 0.5, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                Color:
+                    rgba: 0, 0, 0, 1 
+                Line:
+                    rectangle: (self.x, self.y, self.width, self.height)
+                    width: 1.5
+        
         Label:
             size_hint_y: None
             height: 30
