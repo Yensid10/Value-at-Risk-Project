@@ -19,10 +19,11 @@ class ApplicationView(BoxLayout):
     # Declare ObjectProperty variables for the stock list and user inputs
     stockList = ObjectProperty(None)
     userInputs = ObjectProperty(None)
-    portfolio = "0"
-    rlPercent = "0"
-    timeHori = "0"
+    portfolio = 0
+    rlPercent = 0
+    timeHori = 0
     simMethod = "Historical"
+    currentTicker = ""
 
     def __init__(self, **kwargs):
         # Call the parent class's constructor
@@ -46,7 +47,25 @@ class ApplicationView(BoxLayout):
             self.populateInputs()
 
     def generateVaR(self):
-        setattr(self.valAtRisk, 'text', " VaR: " + str(999))
+        if self.currentTicker == "":
+            setattr(self.valAtRisk, 'text', " VaR: Please select a stock")
+            return
+        endDate = dt.datetime.now()
+        startDate = endDate - dt.timedelta(days=1000)
+        print(self.currentTicker)
+        stock = yf.download(self.currentTicker, startDate, endDate).tail(500)
+        try:
+            closeDiffs = stock['Adj Close'].pct_change().dropna()
+        except:
+            setattr(self.valAtRisk, 'text', " VaR: STOCK NOT FOUND")
+            return    
+        if self.simMethod == "Historical":
+            # Assuming that N-days VaR = 1-day VaR * sqrt(N)
+            VaR = str(round(np.percentile(closeDiffs, self.rlPercent)*self.portfolio*-1*np.sqrt(self.timeHori), 2))
+        else:
+            VaR = str(round((-self.portfolio*norm.ppf(self.rlPercent, np.mean(closeDiffs), np.std(closeDiffs)))*np.sqrt(self.timeHori), 2))
+        
+        setattr(self.valAtRisk, 'text', " VaR: £" + VaR)
             
     def createButtons(self):
         self.userInputs.add_widget(Label(text="Select Method:", size_hint_y=None, height=30, font_size=20))
@@ -85,7 +104,7 @@ class ApplicationView(BoxLayout):
             centeredLayout = BoxLayout(size_hint_y=None, height=35, padding=[80, 0])
             #Needs to set multiline to false or it won't let you use enter to validate
             text = TextInput(size_hint_x=None, width=275, font_size=18, multiline=False)
-            text.bind(on_text_validate=lambda current, varName=varName: (setattr(self, varName, current.text), self.populateInputs()))
+            text.bind(on_text_validate=lambda current, varName=varName: (setattr(self, varName, int(current.text)), self.populateInputs()))
             centeredLayout.add_widget(text)
             self.userInputs.add_widget(centeredLayout)
         
