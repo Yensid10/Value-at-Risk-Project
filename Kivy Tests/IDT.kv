@@ -90,9 +90,17 @@
                 on_press: root.generateVaR()        
             Label:
                 id: valAtRisk
-                size_hint_x: 0.7
+                size_hint_x: 0.55
                 text: ' VaR: '
                 font_size: 25
+                halign: 'left'
+                valign: 'middle'
+                text_size: self.size
+            Label:
+                id: backTestCheck
+                size_hint_x: 0.15
+                text: ''
+                font_size: 10
                 halign: 'left'
                 valign: 'middle'
                 text_size: self.size
