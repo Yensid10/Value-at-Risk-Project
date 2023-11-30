@@ -1,3 +1,6 @@
+import ctypes
+ctypes.windll.user32.SetProcessDPIAware()
+
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
@@ -5,13 +8,13 @@ from kivy.uix.textinput import TextInput
 from kivy.properties import ObjectProperty
 from kivy.uix.button import Button
 from kivy.uix.togglebutton import ToggleButton
-
+from kivy.config import Config
 import datetime as dt
-import time
 import numpy as np
-from scipy.stats import norm, binom
+from scipy.stats import norm
 import yfinance as yf
 import pandas as pd
+
 ftse100 = pd.read_html('https://en.wikipedia.org/wiki/FTSE_100_Index')[4]
 
 class ApplicationView(BoxLayout):
@@ -19,7 +22,7 @@ class ApplicationView(BoxLayout):
     stockList = ObjectProperty(None)
     userInputs = ObjectProperty(None)
     portfolio = 100000000
-    rlPercent = 5 #Maybe change to be a slider
+    rlPercent = 5 #Maybe change to be a slider and change to 
     timeHori = 1
     simMethod = "Historical"
     currentTicker = ""
@@ -45,8 +48,6 @@ class ApplicationView(BoxLayout):
             current.state = 'down'            
             self.populateInputs()
 
-
-
     def generateVaR(self):
         if self.currentTicker == "":
             setattr(self.valAtRisk, 'text', " VaR: Please select a stock")
@@ -67,12 +68,10 @@ class ApplicationView(BoxLayout):
             VaR = str('{:,}'.format(round((-self.portfolio*norm.ppf(self.rlPercent/100, np.mean(closeDiffs), np.std(closeDiffs)))*np.sqrt(self.timeHori), 2)))
         
         setattr(self.valAtRisk, 'text', " VaR: £" + VaR)
-            
-            
-            
+                        
     def createButtons(self):
-        self.userInputs.add_widget(Label(text="Select Method:", size_hint_y=None, height=30, font_size=25))
-        radioButtons = BoxLayout(size_hint_y=None, height=35, padding=[175, 0])
+        self.userInputs.add_widget(Label(text="Select Method:", size_hint_y=None, height=30, font_size=20))
+        radioButtons = BoxLayout(size_hint_y=None, height=35, padding=[120, 0])
         
         hButton = ToggleButton(text='Historical', group='simMethod', size_hint_x=None, width=100)
         hButton.bind(on_press=self.simMethodPressed)
@@ -99,14 +98,14 @@ class ApplicationView(BoxLayout):
         # Create a dictionary of variable names and their corresponding displayed texts
         variables = {
             'portfolio': 'Enter Portfolio Value (£): ',
-            'rlPercent': 'Enter Risk Level Percentage: ',
-            'timeHori': 'Enter Time Horizon: '
+            'rlPercent': 'Enter Risk Level Percentage (%): ',
+            'timeHori': 'Enter Time Horizon (No. of Days): '
         }
         for varName, label in variables.items():
-            self.userInputs.add_widget(Label(text=label, size_hint_y=None, height=30, font_size=25))
-            centeredLayout = BoxLayout(size_hint_y=None, height=35, padding=[140, 0])
+            self.userInputs.add_widget(Label(text=label, size_hint_y=None, height=30, font_size=20))
+            centeredLayout = BoxLayout(size_hint_y=None, height=30, padding=[85, 0])
             #Needs to set multiline to false or it won't let you use enter to validate
-            text = TextInput(size_hint_x=None, width=275, font_size=18, multiline=False)
+            text = TextInput(size_hint_x=None, width=275, font_size=15, multiline=False)
             text.bind(on_text_validate=lambda current, varName=varName: (setattr(self, varName, int(current.text)), self.populateInputs()))
             centeredLayout.add_widget(text)
             self.userInputs.add_widget(centeredLayout)
@@ -114,11 +113,9 @@ class ApplicationView(BoxLayout):
         self.createButtons()
         
         if self.portfolio == 100000000 and self.rlPercent == 5 and self.timeHori == 1:
-            self.userInputs.add_widget(Label(text="\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n[u]Current Info Given (Default)[/u]\n" + f"Portfolio Value: £{'{:,}'.format(self.portfolio)}\n" + f"Risk Level Percentage: {self.rlPercent}%\n" + f"Time Horizon: {self.timeHori} day(s)", size_hint_y=None, height=10, markup=True, font_size=20, pos_hint={'center_x': 0.3}))
+            self.userInputs.add_widget(Label(text="\n\n\n\n\n[u]Current Info Given (Default)[/u]\n" + f"Portfolio Value: £{'{:,}'.format(self.portfolio)}\n" + f"Risk Level Percentage: {self.rlPercent}%\n" + f"Time Horizon: {self.timeHori} day(s)", size_hint_y=None, height=10, markup=True, font_size=20, pos_hint={'center_x': 0.3}))
         else:
-            self.userInputs.add_widget(Label(text="\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n[u]Current Info Given[/u]\n" + f"Portfolio Value: £{'{:,}'.format(self.portfolio)}\n" + f"Risk Level Percentage: {self.rlPercent}%\n" + f"Time Horizon: {self.timeHori} day(s)", size_hint_y=None, height=10, markup=True, font_size=20, pos_hint={'center_x': 0.3}))
-
-            
+            self.userInputs.add_widget(Label(text="\n\n\n\n[u]Current Info Given[/u]\n" + f"Portfolio Value: £{'{:,}'.format(self.portfolio)}\n" + f"Risk Level Percentage: {self.rlPercent}%\n" + f"Time Horizon: {self.timeHori} day(s)", size_hint_y=None, height=10, markup=True, font_size=20, pos_hint={'center_x': 0.3}))
 
 class IDTApp(App):
     def build(self):
