@@ -4,6 +4,7 @@ from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.properties import ObjectProperty
 from kivy.uix.button import Button
+from kivy.uix.togglebutton import ToggleButton
 
 
 import datetime as dt
@@ -18,11 +19,10 @@ class ApplicationView(BoxLayout):
     # Declare ObjectProperty variables for the stock list and user inputs
     stockList = ObjectProperty(None)
     userInputs = ObjectProperty(None)
-    # currentInfo = ObjectProperty(None)
     portfolio = "0"
     rlPercent = "0"
     timeHori = "0"
-    simMethod = ""
+    simMethod = "Historical"
 
     def __init__(self, **kwargs):
         # Call the parent class's constructor
@@ -32,18 +32,40 @@ class ApplicationView(BoxLayout):
         self.populateInputs()
 
     def populateList(self):
-    # Add 100 buttons to the stock list
         for i in range(len(ftse100)):
             button = Button(text=ftse100['Company'][i], size_hint_y=None, height=30, font_size=20)
-            button.bind(on_release=lambda btn, i=i: (setattr(self.currentStock, 'text', "Stock: " + ftse100['Ticker'][i]), setattr(self, 'currentTicker', str(ftse100['Ticker'][i]))))
+            #Set the currentStock to the stock ticker that is clicked, and save it to the variable
+            button.bind(on_release=lambda btn, i=i: (setattr(self.currentStock, 'text', "Stock: " + ftse100['Ticker'][i]), setattr(self, 'currentTicker', str(ftse100['Ticker'][i])))) 
             self.stockList.add_widget(button)
+           
+    def simMethodPressed(self, current):
+        if current.state == 'normal':
+            current.state = 'down'
+            self.simMethod = current.text
+            self.populateInputs()
+
+            
+    def createButtons(self):
+        self.userInputs.add_widget(Label(text="Select Method:", size_hint_y=None, height=30, font_size=20))
+        radioButtons = BoxLayout(size_hint_y=None, height=35, padding=[115, 0])
         
-    # def updateInfo(self, current, varName):
-    #     setattr(self, varName, current.text)
-    #     self.currentInfo.text = "[u]Current Info Given[/u]\n" + \
-    #                             f"Portfolio Value: £{self.portfolio}\n" + \
-    #                             f"Risk Level Percentage: {self.rlPercent}%\n" + \
-    #                             f"Time Horizon: {self.timeHori} days"
+        hButton = ToggleButton(text='Historical', group='simMethod', size_hint_x=None, width=100)
+        hButton.bind(on_press=self.simMethodPressed)
+        if self.simMethod == 'Historical':
+            hButton.state = 'down'
+        else:
+            hButton.state = 'normal'
+        radioButtons.add_widget(hButton)
+
+        mButton = ToggleButton(text='Model', group='simMethod', size_hint_x=None, width=100)
+        mButton.bind(on_press=self.simMethodPressed)
+        if self.simMethod == 'Model':
+            mButton.state = 'down'
+        else:
+            mButton.state = 'normal'
+        radioButtons.add_widget(mButton)
+
+        self.userInputs.add_widget(radioButtons)
 
     def populateInputs(self):
         self.userInputs.clear_widgets()
@@ -52,17 +74,17 @@ class ApplicationView(BoxLayout):
             'portfolio': 'Enter Portfolio Value (£): ',
             'rlPercent': 'Enter Risk Level Percentage: ',
             'timeHori': 'Enter Time Horizon: '
-            # 'simMethod': 'Enter the VaR :'
         }
         for varName, label in variables.items():
             self.userInputs.add_widget(Label(text=label, size_hint_y=None, height=30, font_size=20))
             centeredLayout = BoxLayout(size_hint_y=None, height=35, padding=[80, 0])
+            #Needs to set multiline to false or it won't let you use enter to validate
             text = TextInput(size_hint_x=None, width=275, font_size=18, multiline=False)
             text.bind(on_text_validate=lambda current, varName=varName: (setattr(self, varName, current.text), self.populateInputs()))
             centeredLayout.add_widget(text)
             self.userInputs.add_widget(centeredLayout)
         
-        
+        self.createButtons()
         
         self.userInputs.add_widget(Label(text="\n\n\n\n[u]Current Info Given[/u]\n" + f"Portfolio Value: £{self.portfolio}\n" + f"Risk Level Percentage: {self.rlPercent}%\n" + f"Time Horizon: {self.timeHori} day(s)", size_hint_y=None, height=10, markup=True, font_size=20, pos_hint={'center_x': 0.3}))
 
