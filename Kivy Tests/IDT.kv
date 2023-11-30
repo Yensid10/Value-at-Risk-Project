@@ -4,6 +4,7 @@
     stockList: stockList
     userInputs: userInputs
     currentStock: currentStock
+    valAtRisk: valAtRisk
     orientation: 'horizontal'
 
     BoxLayout:
@@ -62,8 +63,20 @@
                     rectangle: (self.x, self.y, self.width, self.height)
                     width: 1.5
         
-        Label:
+        BoxLayout:
+            orientation: 'horizontal'
             size_hint_y: None
             height: 30
-            text: 'VAR:'
-            font_size: 25
+            Button:
+                size_hint_x: 0.3
+                text: 'Generate'
+                font_size: 25
+                on_press: root.generateVaR()        
+            Label:
+                id: valAtRisk
+                size_hint_x: 0.7
+                text: ' VaR: '
+                font_size: 25
+                halign: 'left'
+                valign: 'middle'
+                text_size: self.size

@@ -30,6 +30,7 @@ class ApplicationView(BoxLayout):
         # Populate the stock list and user inputs
         self.populateList()
         self.populateInputs()
+        # self.generateVaR()
 
     def populateList(self):
         for i in range(len(ftse100)):
@@ -44,8 +45,8 @@ class ApplicationView(BoxLayout):
             current.state = 'down'            
             self.populateInputs()
 
-            
-
+    def generateVaR(self):
+        setattr(self.valAtRisk, 'text', " VaR: " + str(999))
             
     def createButtons(self):
         self.userInputs.add_widget(Label(text="Select Method:", size_hint_y=None, height=30, font_size=20))
