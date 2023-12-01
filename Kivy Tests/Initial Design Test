@@ -55,17 +55,18 @@ class ApplicationView(BoxLayout):
             if self.simMethod == "Historical":
                 VaR = np.percentile(backTest, self.rlPercent)*np.sqrt(self.timeHori)*self.portfolio
             else:
-                VaR = (-self.portfolio*norm.ppf(self.rlPercent/100, np.mean(backTest), np.std(backTest)))*np.sqrt(self.timeHori)#*-1 I dont think this works, will have to retry for model
+                VaR = (-self.portfolio*norm.ppf(self.rlPercent/100, np.mean(backTest), np.std(backTest)))*np.sqrt(self.timeHori)*-1
             nextDay = stock['Adj Close'].pct_change()[i+adjust:i+adjust+1].values[0]*np.sqrt(self.timeHori)*self.portfolio
             if VaR > nextDay:
                 count += 1
         pValue = binom.cdf((len(stock)-adjust)-count,len(stock)-adjust,1-self.rlPercent/100)
 
         if pValue > self.rlPercent/100:
-            print("Back Test: PASSED with " + str(round(pValue*100, 0)) + "% statistical significance level (p-value)")
+            setattr(self.backTestCheck, 'color', (0, 1, 0, 1)) #Green
+            setattr(self.backTestCheck, 'text', "PASSED: " + str(round(pValue*100, 0)) + "% (p-value)")
         else:
-            print("Back Test: FAILED with " + str(round(pValue*100, 0)) + "% statistical significance level (p-value)")
-        #Adjust this so it changes what is displayed in backTestCheck, whilst also changing the colour of the text
+            setattr(self.backTestCheck, 'color', (1, 0, 0, 1)) #Red
+            setattr(self.backTestCheck, 'text', "FAILED: " + str(round(pValue*100, 0)) + "% (p-value)")
 
     def generateVaR(self):
         if self.currentTicker == "":
@@ -78,13 +79,13 @@ class ApplicationView(BoxLayout):
         try:
             closeDiffs = stock['Adj Close'].pct_change().dropna()
         except:
-            setattr(self.valAtRisk, 'text', " STOCK NOT FOUND")
-            return    
+            stock = yf.download(self.currentTicker + ".L", startDate, endDate).tail(500)
+            closeDiffs = stock['Adj Close'].pct_change().dropna()
         if self.simMethod == "Historical":
             # Assuming that N-days VaR = 1-day VaR * sqrt(N)
-            VaR = str('{:,}'.format(round(np.percentile(closeDiffs, self.rlPercent)*self.portfolio*-1*np.sqrt(self.timeHori), 2)))
+            VaR = str('{:,}'.format(int(round(np.percentile(closeDiffs, self.rlPercent)*self.portfolio*-1*np.sqrt(self.timeHori), 0))))
         else:
-            VaR = str('{:,}'.format(round((-self.portfolio*norm.ppf(self.rlPercent/100, np.mean(closeDiffs), np.std(closeDiffs)))*np.sqrt(self.timeHori), 2)))
+            VaR = str('{:,}'.format(int(round((-self.portfolio*norm.ppf(self.rlPercent/100, np.mean(closeDiffs), np.std(closeDiffs)))*np.sqrt(self.timeHori), 0))))
         
         setattr(self.valAtRisk, 'text', " VaR: £" + VaR)
         
@@ -136,7 +137,9 @@ class ApplicationView(BoxLayout):
         if self.portfolio == 100000000 and self.rlPercent == 5 and self.timeHori == 1:
             self.userInputs.add_widget(Label(text="\n\n\n\n\n[u]Current Info Given (Default)[/u]\n" + f"Portfolio Value: £{'{:,}'.format(self.portfolio)}\n" + f"Risk Level Percentage: {self.rlPercent}%\n" + f"Time Horizon: {self.timeHori} day(s)", size_hint_y=None, height=10, markup=True, font_size=20, pos_hint={'center_x': 0.3}))
         else:
-            self.userInputs.add_widget(Label(text="\n\n\n\n[u]Current Info Given[/u]\n" + f"Portfolio Value: £{'{:,}'.format(self.portfolio)}\n" + f"Risk Level Percentage: {self.rlPercent}%\n" + f"Time Horizon: {self.timeHori} day(s)", size_hint_y=None, height=10, markup=True, font_size=20, pos_hint={'center_x': 0.3}))
+            self.userInputs.add_widget(Label(text="\n\n\n\n\n[u]Current Info Given[/u]\n" + f"Portfolio Value: £{'{:,}'.format(self.portfolio)}\n" + f"Risk Level Percentage: {self.rlPercent}%\n" + f"Time Horizon: {self.timeHori} day(s)", size_hint_y=None, height=10, markup=True, font_size=20, pos_hint={'center_x': 0.3}))
+        
+        self.userInputs.add_widget(Label(text="\n\n\n\n\n\n\n\n\n\n\n\n                                                                                                                       [u]Back-Testing[/u]", size_hint_y=None, height=10, markup=True, font_size=14, color=(0, 0, 0, 1)))
 
 class IDTApp(App):
     def build(self):
