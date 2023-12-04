@@ -10,7 +10,7 @@ import pandas as pd
 ftse100 = pd.read_html('https://en.wikipedia.org/wiki/FTSE_100_Index')[4]
 
 def VaRCalc(p, rL, mean, sD):
-    return p - p*(norm.ppf(rL, mean, sD) + 1)
+    return -p*(norm.ppf(rL, mean, sD))
 
 print("WELCOME TO THE VAR CALCULATOR\n-----------------------------\nWhich companies stock would you like to calculate the VaR for?")
 for i in range(len(ftse100)):
