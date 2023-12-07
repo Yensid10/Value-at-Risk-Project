@@ -1,9 +1,9 @@
 import csv
 import numpy as np
 
-print("Historical Simulation VaR\n")
+print("Historical Simulation VaR/n")
 closes = np.array([])
-with open('NKE.csv', 'r') as file:
+with open('C:/Users/bensh/OneDrive/Essentials/Documents/Git/PROJECT/Command Line VaR Programs/NKE.csv', 'r') as file:
     reader = csv.reader(file)
     flag = True
     for row in reader:

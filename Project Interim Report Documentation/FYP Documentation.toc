@@ -1,27 +1,31 @@
 \contentsline {section}{\numberline {1}Abstract}{3}{}%
-\contentsline {section}{\numberline {2}Chapter 1 - Introduction}{4}{}%
-\contentsline {subsection}{\numberline {2.1}What is VaR?}{4}{}%
-\contentsline {subsection}{\numberline {2.2}Aims and Goals}{4}{}%
-\contentsline {subsection}{\numberline {2.3}Milestone Plan \& Time-scale}{4}{}%
-\contentsline {section}{\numberline {3}Chapter 2 - Understanding VaR}{7}{}%
-\contentsline {subsection}{\numberline {3.1}Historical Simulation}{7}{}%
-\contentsline {subsection}{\numberline {3.2}Model Building (Variance-Covariance)}{7}{}%
-\contentsline {subsection}{\numberline {3.3}Coding VaR Methods}{7}{}%
-\contentsline {subsection}{\numberline {3.4}Back Testing}{7}{}%
-\contentsline {subsection}{\numberline {3.5}Combining Implementations}{7}{}%
-\contentsline {subsection}{\numberline {3.6}Multiple Stocks}{7}{}%
-\contentsline {section}{\numberline {4}Chapter 3 - Graphical User Interface}{7}{}%
-\contentsline {subsection}{\numberline {4.1}What is Kivy?}{7}{}%
-\contentsline {subsection}{\numberline {4.2}Conceptualisation of Initial Design Ideas}{7}{}%
-\contentsline {subsection}{\numberline {4.3}Initial GUI Creation}{7}{}%
-\contentsline {subsection}{\numberline {4.4}GUI Practicality \& Industry Comparisons}{7}{}%
-\contentsline {section}{\numberline {5}Chapter 4 - Software Engineering}{7}{}%
-\contentsline {subsection}{\numberline {5.1}Design Patterns}{7}{}%
-\contentsline {subsection}{\numberline {5.2}Testing}{7}{}%
-\contentsline {subsection}{\numberline {5.3}Documentation}{7}{}%
-\contentsline {section}{\numberline {6}Chapter 5 - Evaluation \& Scope}{7}{}%
-\contentsline {subsection}{\numberline {6.1}Current Work}{7}{}%
-\contentsline {subsection}{\numberline {6.2}Future Work}{7}{}%
-\contentsline {section}{\numberline {7}Bibliography}{7}{}%
-\contentsline {section}{\numberline {8}Literature Review}{9}{}%
-\contentsline {section}{\numberline {9}Appendix - Diary}{9}{}%
+\contentsline {section}{\numberline {2}Chapter 1 - Introduction}{5}{}%
+\contentsline {subsection}{\numberline {2.1}What is VaR?}{5}{}%
+\contentsline {subsection}{\numberline {2.2}Aims and Goals}{6}{}%
+\contentsline {subsection}{\numberline {2.3}Milestone Plan}{7}{}%
+\contentsline {subsubsection}{\numberline {2.3.1}Timescale}{8}{}%
+\contentsline {subsubsection}{\numberline {2.3.2}Timeline}{9}{}%
+\contentsline {section}{\numberline {3}Chapter 2 --- Understanding VaR}{11}{}%
+\contentsline {subsection}{\numberline {3.1}Historical Simulation}{11}{}%
+\contentsline {subsection}{\numberline {3.2}Model Building (Variance-Covariance)}{12}{}%
+\contentsline {subsection}{\numberline {3.3}Coding VaR Methods}{13}{}%
+\contentsline {subsubsection}{\numberline {3.3.1}Command Line --- Historical Simulation}{13}{}%
+\contentsline {subsubsection}{\numberline {3.3.2}Command Line --- Model Building}{14}{}%
+\contentsline {subsection}{\numberline {3.4}Back Testing}{14}{}%
+\contentsline {subsection}{\numberline {3.5}Combining Implementations}{14}{}%
+\contentsline {subsection}{\numberline {3.6}Multiple Stocks}{14}{}%
+\contentsline {section}{\numberline {4}Chapter 3 - Graphical User Interface}{14}{}%
+\contentsline {subsection}{\numberline {4.1}What is Kivy?}{14}{}%
+\contentsline {subsection}{\numberline {4.2}Conceptualisation of Initial Design Ideas}{14}{}%
+\contentsline {subsection}{\numberline {4.3}Initial GUI Creation}{14}{}%
+\contentsline {subsection}{\numberline {4.4}GUI Practicality \& Industry Comparisons}{14}{}%
+\contentsline {section}{\numberline {5}Chapter 4 - Software Engineering}{15}{}%
+\contentsline {subsection}{\numberline {5.1}Design Patterns}{15}{}%
+\contentsline {subsection}{\numberline {5.2}Testing}{15}{}%
+\contentsline {subsection}{\numberline {5.3}Documentation}{15}{}%
+\contentsline {section}{\numberline {6}Chapter 5 - Evaluation \& Scope}{15}{}%
+\contentsline {subsection}{\numberline {6.1}Current Work}{15}{}%
+\contentsline {subsection}{\numberline {6.2}Future Work}{15}{}%
+\contentsline {section}{\numberline {7}Bibliography}{15}{}%
+\contentsline {section}{\numberline {8}Literature Review}{16}{}%
+\contentsline {section}{\numberline {9}Appendix - Diary}{16}{}%
