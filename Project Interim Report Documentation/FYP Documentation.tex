@@ -8,18 +8,15 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{listings}
-\usepackage{microtype
-}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{adjustbox}
 
 \newcommand\ytl[2]{
     \parbox[b]{12em}{\hfill{\color{cyan}\bfseries\sffamily #1}~$\cdots\cdots$~}\makebox[0pt][c]{$\bullet$}\vrule\quad
     \parbox[c]{10cm}{\vspace{6pt}\color[RGB]{20, 20, 90}\raggedright\sffamily #2\par}
     \\[-2pt]
 }
-
-
-
-
 
 \title{Creating Software for Value at Risk}
 \author{Benjamin Shearlock}
@@ -134,7 +131,7 @@ VaR is significant for several reasons:
     \item \textbf{Market Risk Management:} VaR is used to monitor and mitigate market risks, contributing to the overall stability of financial systems.
 \end{itemize}
 
-VaR has become a cornerstone in risk management for global financial markets. It is used by banks, investment firms, asset managers, and corporates to measure and control the level of risk exposure in their financial portfolios. VaR's adoption is partly driven by regulatory requirements, such as Basel Accords, which mandate financial institutions to calculate and maintain adequate capital reserves based on their risk exposure.\\\vspace{0.3cm}
+VaR has become a cornerstone in risk management for global financial markets. It is used by banks, investment firms, asset managers, and corporates to measure and control the level of risk exposure in their financial portfolios. VaR's adoption is partly driven by regulatory requirements, such as Basel Accords, which mandate financial institutions to calculate and maintain adequate capital reserves based on their risk exposure.NEED A BASEL ACCORDS REFERENCE??\\\vspace{0.3cm} 
 
 
 Developing software for VaR calculation offers numerous advantages:
@@ -179,6 +176,7 @@ Due to unfortunate circumstances, I had rough delays to the start of this Projec
   \item \textbf{Computing Monetary Measures of Risk Different from VaR:} Other monetary risk metrics, which could complement or provide alternatives to VaR, such as Tail Value at Risk, could be considered to present a more complete picture of the risk landscape and enhance the risk management process.
 \end{itemize}
 
+\newpage
 The project's milestones have been structured to ensure a systematic and efficient approach to the development of the Value at Risk software. This plan is divided into distinct phases, each with specific objectives and deliverables.
 
   \begin{enumerate}
@@ -193,7 +191,7 @@ The project's milestones have been structured to ensure a systematic and efficie
 
   Concurrent with the development, ongoing documentation is a critical aspect of this project. Documenting the process as it unfolds serves multiple purposes: it ensures a clear record of the development process and aids in identifying and resolving issues more efficiently. This approach to documentation not only enhances the quality and maintainability of the software but also ensures that the project's progress is well-documented and aligns with the overall objectives and milestones.
 
-  \subsubsection{Timeline}
+\subsubsection{Timeline}
 \vspace{-2\baselineskip}
 \begin{table}[H]
   \centering
@@ -321,7 +319,7 @@ As you can see, it takes a very literal approach, assuming that, since you've go
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.5\textwidth]{Images/Image 1.png}
-  \caption{The Value at Risk (VaR) is calculated from the probability distribution of the variations in the portfolio's value, where gains are represented as positive values and losses as negative. The confidence level for this calculation is set at X\%. [\ref{ref4}]}
+  \caption{The Value at Risk (VaR) is calculated from the probability distribution of the variations in the portfolio's value, where gains are represented as positive values and losses as negative. The confidence level for this calculation is set at X\%.[\ref{ref4}]}
   \label{VaR Distribution Curve}
 \end{figure}
 
@@ -336,6 +334,8 @@ Refer to Figure~\ref{VaR Distribution Curve}, it expresses that:
   \item The graph assumes that the past can be a predictor of future risk, thus the frequency and magnitude of historical losses are directly used to estimate the VaR.
 \end{itemize}
 
+In the future, I could also use extreme value theory (EVT) to smooth our the distribution, which would allow for a more accurate estimation of the VaR, as it would allow for a better estimation of the tail of the distribution, which is where the worst losses are.[\ref{ref6}]\\\vspace{0.3cm}
+
 \subsection{Model Building (Variance-Covariance)}
 
 The Variance-Covariance method, used in this analysis for Value at Risk (VaR) calculation, is based on the assumption of normally distributed market returns. The key steps in the model are as follows:
@@ -347,6 +347,7 @@ The Variance-Covariance method, used in this analysis for Value at Risk (VaR) ca
     \item \textbf{VaR Calculation:} The Value at Risk is calculated using the formula:
     \begin{equation}
       VaR = - P \times (\text{norm.ppf}(rl, \text{mean}, \text{sD}) + 1) 
+      \label{eq:Variance-Covariance VaR}
     \end{equation}
     where:
 \begin{itemize}
@@ -357,6 +358,7 @@ The Variance-Covariance method, used in this analysis for Value at Risk (VaR) ca
 \end{itemize}
 \end{enumerate}
 
+\newpage
 The Value at Risk (VaR) calculation in the Variance-Covariance method is executed using a specific equation that combines statistical measures with the portfolio value to estimate the potential loss over a specified time horizon. The equation is as follows:
 
 \begin{enumerate}
@@ -372,12 +374,12 @@ Thus, the equation calculates the VaR as the maximum expected loss over a certai
 
 
 \subsection{Coding VaR Methods}
-To validate that I could apply the knowledge I had gained from my research, I decided to code the two methods of VaR calculation that I had researched, this being the historical simulation and model building methods. I have decided to use Python (3.11.1) as my coding language, as it is a language that I am familiar with and has a rich ecosystem of libraries that I can use to help me with the project. I also decided to use command line to display the results, as it utilises pythons inbuilt \(\text{print()}\) command to easily display variables, allowing for a quick and easy way to display the results of the VaR calculations, as well as any tests run as well. %I have also decided to use yahoo finance as my data source, as it is a free and easy to use API that allows for the collection of historical stock data, which is exactly what I need for this project. 
-\\\vspace{0.3cm}
+To validate that I could apply the knowledge I had gained from my research, I decided to code the two methods of VaR calculation that I had researched, this being the historical simulation and model building methods. I have decided to use Python (3.11.1) as my coding language, as it is a language that I am familiar with and has a rich ecosystem of libraries that I can use to help me with the project. I also decided to use command line to display the results, as it utilises pythons inbuilt \(\text{print()}\) command to easily display variables, allowing for a quick and easy way to display the results of the VaR calculations, as well as any tests run as well. %I have also decided to use yahoo finance as my data source, as it is a free and easy to use API that allows for the collection of historical stock data, which is exactly what I need for this project.
 
 \subsubsection{Command Line --- Historical Simulation}
+I decided to get the stock data I wanted to use for this directly from \href{https://finance.yahoo.com/}{Yahoo Finance's} online website, since it would allow me to specify the days I wanted to use, as well as the stock I wanted to use. I decided to use Nike (NKE) as my stock, as it is a company that I am familiar with and I know has been around for a long time, so it would have a lot of historical data to use. I decided to use the last 500 days of data, as it would allow for a good amount of historical stock data coverage, but not too much that it would take a long time to run.\\\vspace{0.3cm}
 
-You code them, here's some code:
+To start, I imported the libraries I would need, this being \texttt{numpy} and \texttt{csv}. I then created an empty array called \texttt{closes}, which would be used to store the closing prices of the stock. I then opened the CSV file that I had downloaded from Yahoo Finance, and used a \texttt{for} loop to iterate through each row of the CSV file, adding the closing price of the stock to the \texttt{closes} array.\texttt{diffs} array, this being stored in the 6th column of the CSV file.\\\vspace{0.3cm}
 \begin{verbatim}
   closes = np.array([])
   with open('NKE.csv', 'r') as file:
@@ -386,47 +388,259 @@ You code them, here's some code:
           closes = np.append(closes, float(row[5]))
   \end{verbatim}
 
+I then created an empty array called \texttt{diffs}, which would be used to store the percentage differences of the closing prices of the stock, followed by a \texttt{for} loop to iterate through each element of the \texttt{closes} array, calculating said percentage difference between the current element and the previous element, then adding it to the \texttt{diffs} array. Finally, I used the \texttt{np.percentile()} function to calculate the 5th percentile of the \texttt{diffs} array, which would be the VaR for the portfolio (this meaning I didn't need to manually order it to find the 25th worst case result result, I can just use this useful function). I multiplied this by the portfolio value, which in this case was 100,000,000, to get the VaR for the portfolio and then multiplied this by -1, as VaR is always represented as a positive value, to get the final VaR value.\\\vspace{0.3cm}
+
   \begin{verbatim}
     diffs = np.array([])
     for i in range(1, len(closes)): 
         diffs = np.append(diffs, (closes[i]/closes[i-1] - 1))
     print("500 Day stock history, for 1 day time horizon, 95% certainty, 
-    Portfolio of 100,000,000, VaR for the 23/10/2023: £" + 
-    str(round(np.percentile(diffs, 5)*100000000*-1, 3)))
+           Portfolio of 100,000,000, VaR for the 23/10/2023: £" + 
+           str(round(np.percentile(diffs, 5)*100000000*-1, 3)))
     \end{verbatim}
+
+This results in this output, which appears to be a reasonable VaR result. \\\vspace{0.3cm}
 
   \begin{figure}[h]
     \centering
-    \includegraphics[width=1.1\textwidth]{Images/Historical Command Line Result.png}
-    \caption{Your caption}
-    \label{fig:your_label}
+    \includegraphics[width=1\textwidth]{Images/Historical Command Line Result.png}
+    \caption{Historical Simulation VaR Result}
+    \label{fig:Historical Command Line Result}
   \end{figure}
 
-  \subsubsection{Command Line --- Model Building}
+For this project, I did not look up any online VaR results for this stock or any other further stock used, since I believe the methods were robust enough to be reliable. Since I also create multiple methods for calculating VaR, I was able to cross-reference them with each other, with them mostly showing similar results for the same stock, so I am confident that 
+these are accurate VaR predictions.
 
+\subsubsection{Command Line --- Variance-Covariance Model Building}
 
+To begin with this method, I discovered that I could import the historical stock price data conveniently by using the \href{https://pypi.org/project/yfinance/}{yfinance} package, which provides a convenient way to download financial market data from Yahoo Finance directly into Python. I selected Nike (NKE) as the target stock so I could compare it to the previous result given by Historical Simulation. A time span of the last 500 trading days was once again chosen to balance between a sufficient data sample size and computational efficiency, as well as for comparative reasons.\\\vspace{0.3cm}
 
-\subsection{Back Testing}
-I was rather smart with this, including a diagram would be cool but idk how to do that in latex
+The first step was to import the necessary libraries and download the stock data using the \texttt{yf.download()} function, one of these additional libraries being scipy, which is a used for scientific and technical computing, due to it allowing the user to manipulate and visualize data with a wide range of high-level commands, one of such being the \texttt{norm.ppf()} function, which is used to calculate the inverse of the cumulative distribution function (CDF) of the normal distribution, also known as the Percent Point Function (PPF) that I will need to utilise in a future step. I then discovered that you can use the inbuilt \texttt{pct\_change()} function to calculate the daily returns/percentage changes for the whole data set, which is a much more efficient way of doing it than the method I used for Historical Simulation. I also used the \texttt{dropna()} function to remove any missing values from the data set, in case using the API rather then the CSV could cause this issue.\\\vspace{0.3cm}
+
+\begin{verbatim}
+  from scipy.stats import norm
+  import yfinance as yf
+  
+  stock = yf.download('NKE', dt.datetime(2021, 10, 26), dt.datetime(2023, 10, 24))
+  closeDiffs = stock['Adj Close'].pct_change()
+\end{verbatim}
+
+I then proceeded to define the necessary variables to calculate the VaR, following the formula outlined in Equation~\ref{eq:Variance-Covariance VaR}. The portfolio and risk level were set to 100,000,000 and 0.05 (5\%) respectively, since these were the value's used in Historical Simulation, then the mean was calculated using the \texttt{np.mean} function, followed by the standard deviation using the \texttt{np.std} function.\\\vspace{0.3cm}
+
+\begin{verbatim}
+  portfolio = 100000000
+  rlPercent = 0.05
+  mean = np.mean(closeDiffs)
+  sD = np.std(closeDiffs)
+\end{verbatim}
+
+Finally, calculating the VaR result takes place with the negative portfolio value multiplied by the \texttt{norm.ppf()} function, which takes the risk level, mean, and standard deviation of returns as inputs and outputs a Z-score, which corresponds to the point on the normal distribution curve where the cumulative probability is equal to the risk level, giving us the VaR estimation.\\\vspace{0.3cm}
+
+\begin{verbatim}
+  print("500 Day stock history, for 1 day time horizon, 95% certainty, 
+         Portfolio of 100,000,000, VaR for the 23/10/2023: £" + 
+         str(round(-portfolio*(norm.ppf(rlPercent, mean, sD)), 3)))
+\end{verbatim}
+
+The output of this computation provides a VaR estimate under the assumption of normally distributed returns and a linear correlation between the assets. This assumption is a of course a simplification and might not hold during periods of financial turmoil, which I acknowledge as a limitation of the model, but for this data it is acceptably accurate.\\\vspace{0.3cm}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=1\textwidth]{Images/Variance-Covariance Command Line Result.png}
+  \caption{Variance-Covariance VaR Result}
+  \label{fig:Variance-Covariance Command Line Result}
+\end{figure}
+
+As you can see, the VaR result is very similar to the one calculated using Historical Simulation, which is a good sign that both methods are accurate. But how do I check the validity of both methods/models?
+
+\subsection{Back-Testing}
+So for the methods that I had already coded, I had achieved VaR estimations, but I had no way of validating how accurate they were, which is where back-testing comes in. Back-testing is a way of testing the accuracy of a model by using historical data to see how well it would have predicted the actual results. For example, if I had a model that predicted the weather, I could use back-testing to see how accurate it was by using historical weather data to see how well it has predicted the weather correctly in the past\\\vspace{0.3cm}
+
+To achieve this, you need to see how many times you model has previously predicted the correct VaR, or more so, how many times they have predicted the VaR wrong. To do this, lets say you have 500 days of historical data, and you want to see how many times your model has predicted the VaR wrong for a 1 day time horizon, 95\% certainty, and a portfolio of 100,000,000. 
+You would first need to take a portion of the data, lets say the first 50 days, and calculate the VaR for it using the model. You would then compare this VaR result to the actual value that the portfolio lost/gained from the 50th day to the 51st day, thus seeing if the model predicted the VaR correctly. This would then continue, keeping the 50 day data span, but moving it along by 1 day each time, so the next data span would be from the 2nd day to the 51st day, then the 3rd day to the 52nd day, and so on, until you reach the end of the data set. This can be seen in Figure~\ref{fig:Back-Testing} below.\\\vspace{0.3cm}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=1\textwidth]{Images/Back-Testing.png}
+  \caption{Back-Testing Diagram (Source: My Presentation Powerpoint)}
+  \label{fig:Back-Testing}
+\end{figure}
+
+Every time one of these spans creates a VaR that fails to accurately predict the next days loss, you would make note of it and add it to a counting total. This total can then be utilised with p-values. A p-value is a statistical measure that helps to determine the significance of the results obtained from a hypothesis test. In the context of back-testing, the null hypothesis typically states that the model's predictions are correct, and the alternative hypothesis suggests that the model's predictions are not accurate. A low p-value indicates that the observed data is unlikely under the null hypothesis, leading to its rejection in favour of the alternative hypothesis. So for our VaR back-testing, a low p-value would suggest that the model's performance is not as good as predicted, potentially failing to capture the risk adequately.
+
+To do this within Python whilst leading on from our previous two coded methods, I added the following codee to the end on both models. It creates a variable called \texttt{count}, which is used to count the number of times the model has predicted the VaR incorrectly, and a variable called \texttt{adjust}, which is used to adjust the data span to be used for the VaR calculation, this being 10\% of the data set. It then creates a \texttt{for} loop, which iterates through each day of the data set, calculating the VaR for the data span, then comparing it to the actual value that the portfolio lost/gained from the last day of the data span to the next day, thus seeing if the model predicted the VaR correctly. This will repeat for the length of the entire historical data history, minus the span adjust and minus 1 as well, since you would need to compare 449--499 day VaR to day 449--500's return. The next day return is also multiplied by -1, so it accounts so that the losses are positive like the VaR estimations, making it easy to compare if one is incorrectly larger then the other. If the VaR was predicted incorrectly, the \texttt{count} variable is increased by 1.\\\vspace{0.3cm}
+
+\begin{verbatim}
+  count = 0
+  adjust = int(len(stock)/10)
+  for i in range(1, len(stock) - adjust - 1):
+      backTest = stock['Adj Close'].pct_change()[i:i+adjust]
+      if Historical Simulation:
+          VaR = np.percentile(backTest, rlPercent)*portfolio*-1
+      else: #Model Building
+          VaR = -portfolio*(norm.ppf(rlPercent, mean, sD))
+      nextDay = stock['Adj Close'].pct_change()[i+adjust:i+adjust+1].values[0]
+      nextDay = nextDay*portfolio*-1 #Done to fit within Latex Hbox
+      if nextDay > VaR:
+          count += 1
+\end{verbatim}
+
+ Next, I compute the p-value using the cumulative distribution function (CDF) of the binomial distribution, which in turn calculates the probability of observing a certain number of VaR exceedances (or fewer) given the expected number of exceedances under the model's assumptions.\vspace{0.3cm}
+ 
+ \begin{verbatim}
+  pValue = binom.cdf((len(stock)-adjust)-count,len(stock)-adjust,1-rlPercent/100)
+  \end{verbatim}
+
+ The parameters for the \texttt{binom.cdf} function are as follows:
+
+\begin{itemize}
+    \item The number of successes, which is the total number of days minus the adjustment for the data window and the count of exceedances.
+    \item The number of trials, which is the length of the stock data minus the adjustment for the data window.
+    \item The probability of success on each trial, which is 1 minus the risk level percentage divided by 100, reflecting the confidence level of the VaR estimate.
+\end{itemize}
+
+The calculated p-value is then compared to the risk level percentage to determine the statistical significance. If the p-value is greater than the risk level percentage, the model passes the back-test, indicating that the number of VaR exceedances is within acceptable limits of the model's predictions. Conversely, a p-value lower than the risk level percentage suggests that the model's poor predictive performance is statistical significance, and it fails the back-test.[\ref{ref11}]
+
+\begin{verbatim}
+if pValue > rlPercent/100:
+    print("Back Test: PASSED with " + str(round(pValue*100, 0)) + 
+    "% statistical significance level (p-value)")
+else:
+    print("Back Test: FAILED with " + str(round(pValue*100, 0)) + 
+    "% statistical significance level (p-value)")
+\end{verbatim}
+
+By utilizing p-values, we can assign a level of confidence to our back-testing results, supporting the validation process of our VaR model. It enables us to make informed decisions about the model's reliability and whether it can be trusted for making future risk assessments. It help provide a quantitative method to validate the accuracy of VaR models, ensuring that risk managers and financial analysts can rely on the model's predictions to make critical decisions. In the future, along a set of portfolio's with multiple stocks within, I could perform multiple back test on multiple stocks using both VaR, and form a statistical conclusion on how many time each model fails the p-value back-testing, thus seeing which model is more reliable and should possibly be used in further graphical builds, although I have not touched on Monet Carlo simulation yet, which could be far more accurate then either of these two methods, so I will have to see how my research into it goes.[\ref{ref11}]
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\textwidth]{Images/Back-Testing Results.png}
+  \caption{Results using Tesco stock data, for Historical Simulation followed by Model Building.}
+  \label{fig:Back-Testing Results}
+\end{figure}
 
 \subsection{Combining Implementations}
-Show how I made the command line program, idk just show off the code and results
+Before I decided to embark on the creation of any of my graphical elements, I thought it would be good to have some way to test my VaR models on different single stocks, so I could see a range of results, and better gauge the consistency levels of my back-tests, as well as also being able to simple see more VaR results then just what I had seen so far. I created a fully functioning command line program that allows the user to select a stock from the FTSE100 list (I chose this as I do not have a wide knowledge of stock lists, but since I knew of this one already and all the stocks on it are significant, it would be good to implement), enter a given portfolio value that they would have invested within this one particular stock, and then select a time horizon and confidence level for the VaR calculation. It would then give them 3 options for how much historical data they would want to use, either 100, 500 or they could input their own dates, and it would finally ask what model they would like to compute the VaR estimation with, either Historical Simulation or Model Building. It would compute the VaR and then display the result, as well as display the p-value back-testing result.\\\vspace{0.3cm}
 
-\subsection{Multiple Stocks}
-Show that I used  some fucking thing that I got from some fucking reference
+Since the code for this is just a large and robust amount of verification and input statements, I will not include it in this report, but I will display a full interaction in figure~\ref{fig:Single Stock VaR}. I used pandas to retrieve the FTSE100 from Wikipedia, pandas being a powerful data manipulation library in Python, allowing for web scraping, reading and writing data, which I utilised it for in this case. Everything else included within the code has been covered within previous pages within this chapter. Full interaction found on the next page:
 
+\begin{figure}
+  \begin{verbatim}
+    WELCOME TO THE VAR CALCULATOR
+    -----------------------------
+    Which companies stock would you like to calculate the VaR for?
+    1 - 3i
+    2 - Admiral Group
+    3 - Airtel Africa
+    *
+    ***
+    *
+    40 - Haleon
+    41 - Halma plc
+    42 - Hargreaves Lansdown
+    43 - Hikma Pharmaceuticals
+    44 - Howdens Joinery
+    *
+    ***
+    *
+    97 - Vodafone Group
+    98 - Weir Group
+    99 - Whitbread
+    100 - WPP plc
+    Enter the number of the company: 42
+    Enter the portfolio value (£): 100000000
+    Enter the risk level percentage (1%, 5%, etc.): 5
+    Enter the time horizon (Max: 100 days): 1
+    How many days of historical data would you like to use, 
+    or would you like to choose your own date boundaries?
+    1. 100 days
+    2. 500 days
+    3. Choose your own
+    Enter the number of your choice: 2
+    [*********************100%%**********************]  1 of 1 completed
+    Would you like to calculate VaR using Historical Simulation, 
+    or using Model Building/Variance-Covariance (H/M): m
+    
+    VaR is: £5,818,845.68
+    Back Test: PASSED with 32.0% statistical significance level (p-value)
+  \end{verbatim}
+  \caption{Console output of the Single Stock VaR.py program.}\label{fig:Single Stock VaR}
+\end{figure}
 
-\section{Chapter 3 - Graphical User Interface}
+ I have neglected to mention how the Time Horizon in handled within this program. The best way to show how it is handled would be to quote from reference [\ref{ref6}] --- \textit{Options, Futures, and Other Derivatives.} by John C. Hull, which states:
+
+ \begin{quote}
+  VaR has two parameters: the time horizon \( N \), measured in days, and the confidence level \( X \). In practice, analysts almost invariably set \( N = 1 \) in the first instance. This is because there is not enough data to estimate directly the behavior of market variables over periods of time longer than 1 day. The usual assumption is: 
+  \begin{equation}
+    N\text{-day VaR} = \text{1-day VaR} \times \sqrt{N}
+    \label{eq:Time Horizon}
+  \end{equation}
+  This formula is exactly true when the changes in the value of the portfolio on successive days have independent identical normal distributions with mean zero. In other cases, it is an approximation.
+\end{quote}
+  
+  Since VaR is scaled with time due to volatility. Volatility tends to be proportional to the square root of time.
+  \begin{equation}
+    \text{Volatility(Time)} = \text{Volatility(One Period)} \times \sqrt{\text{Time Horizon}}
+    \label{eq:Volatility}
+  \end{equation} 
+
+  Since we are dealing with the other cases frequently throughout the use of the VaR Models used within the programs, I utilise the formula \ref{eq:Time Horizon} above to accommodate for the VaR value over a given time period, by multiplying the VaR by the square root of the given time horizon, which is why the user is asked to input the time horizon in days, and not in years or months, this providing sufficient estimations so far.
+
+% \subsubsection{Multiple Stocks}
+\newpage
+\section{Chapter 3 --- Graphical User Interface}
 
 \subsection{What is Kivy?}
+Kivy \href[page=1]{https://kivy.org/#home}{(https://kivy.org/)}is an open-source Python library for developing multitouch application software with a natural user interface (NUI). It is highly versatile and can run on various operating systems, including Windows, macOS, Linux, Android, and iOS\@. This cross-platform compatibility is due to Kivy's use of OpenGL ES 2, allowing it to render consistent graphics across all supported platforms.[\ref{ref9}] Kivy is also free to use, even for commercial purposes, as it is distributed under the MIT license.\\\vspace{0.3cm}
+
+Kivy's compatibility with multiple operating systems makes it an excellent choice for financial software development. The ability to write code once and deploy it on various platforms without modification is particularly advantageous in a financial context, where users may access software from different devices.
+
+\begin{itemize}
+    \item \textbf{Cross-Platform:} Kivy apps can run on desktop and mobile devices, enhancing accessibility for users who need to monitor financial markets or run VaR calculations on the go.
+    \item \textbf{Pythonic Nature:} Given that Python is a leading language in financial modelling due to its simplicity and the powerful data analysis libraries available, Kivy integrates well within the Python ecosystem, as well as it being the chosen language for this project.
+    \item \textbf{Graphics Engine:} Kivy's graphics engine is built over OpenGL ES 2, providing the capability to handle intensive graphical representations, which is essential for visualizing complex financial data that I will want to do in the future.
+\end{itemize}
+
+Developing financial software with Kivy brings several benefits:
+
+\begin{itemize}
+    \item \textbf{Rapid Development:} Kivy's straightforward syntax and powerful widgets allow for rapid development of prototypes and software, which is crucial in the fast-paced environment of financial markets.
+    
+    \item \textbf{Multitouch Support:} The library's inherent support for multitouch can be leveraged to create interactive financial dashboards, enhancing data exploration and manipulation for important tasks such as risk analysis which we will want to use it for.[\ref{ref9}] 
+    
+    \item \textbf{Customizable UI:} Kivy provides the tools to create a highly customizable user interface (UI), enabling the development of aesthetic financial applications tailored to the specific needs of financial analysts.
+    
+    \item \textbf{Community and Support:} Kivy has a growing community and good documentation, which will be highly useful for me as a beginner to the library.
+\end{itemize}
+
+Kivy presents itself as a robust framework for financial software development. Its compatibility with different operating systems, ease of operation within Python, and the capability to create sophisticated UIs make it an appealing choice for developers such as myself to use when creating financial applications, especially when catered for VaR analysis and other risk management tools, which is why I've chosen to use it for this project for the GUI.\@
 
 \subsection{Conceptualisation of Initial Design Ideas}
-Show my super cool picture I drew and talk about what I want 
-\subsection{Initial GUI Creation}
-show off stages of the creation ig
 
-\subsection{GUI Practicality \& Industry Comparisons}
-Explain the uses of the GUI, and delve into the fact you need to look up what other ones do for next turn
+The initial design phase of the Value at Risk (VaR) calculation tool will focus on creating a tool that will allow the user to interact with it in an efficient and effective manor, with less of an emphasis on a visually pleasing design, more on practicality for what has been researched and commented on so far. I had an idea in mind for what I wanted to initially be able to create, so I decided to create a design sketch (Figure~\ref{fig:InitialDesignSketch}), which reflects an early conceptualization of the interface, emphasizing simplicity and functionality.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Images/Initial Design Sketch.jpg}
+  \caption{Initial GUI Design Sketch}
+  \label{fig:InitialDesignSketch}
+\end{figure}
+
+The layout was envisioned to comprise of two main sections: a search and selection panel on the left and an input/detail panel on the right. The search panel allows users to filter and select stocks from the FTSE100 to then be used on the right, as well as search for any stock that they want from an autocomplete database. The detail panel on the right is structured to enable users to specify parameters for the selected stock, such as portfolio value, risk level percentile, time horizon and what VaR model you want to use. A scroll feature could also be implemented to accommodate future desired adjustable parameters, such as historical data options. Below the scroll is a fixed section that will display the final VaR after the rest of the informational parameters have been interacted with/data has been submitted into them. There will also be a tick to indicate if back-testing's hypothesis through statistical analysis had been rejected, this influencing if this model with this stock passes.\\\vspace{0.3cm}
+
+A key feature highlighted in the sketch is the inclusion of the layered "current stock" display in the top right, as it lets the users easily see what they have selected, whilst also letting the scroll move underneath it, helping the program look and act dynamically. Additionally, a tick indicator was conceptualized to provide immediate visual feedback when back-testing succeeds or fails, based on statistical analysis (p-values), enhancing the user's understanding of the model's performance, showing evidence of system status. The design also incorporates radio buttons for VaR calculation modes for historical and model-based approaches, allowing for quick toggling between different methods whilst still maintaining the other pre-selected parameters.\\\vspace{0.3cm}
+
+This initial design was guided by principles of user centered design (UCD) best practices, aiming to streamline the complex process of risk analysis into a manageable and approachable workflow for end-users. Each element was chosen for its potential to make the software accessible to both novice and experienced users, allowing for ease of user regardless of skill level.\\\vspace{0.3cm}
+
+The conceptualisation phase was pivotal in laying the groundwork for the subsequent development of this GUI. It helped me visualise how it needed to look and how the interactions would have to take place, so even if the final result wasn't visually the same, it still provided an excellent user story for how it needed to perform.
+
+\subsection{Initial GUI Creation}
+Before my initial creation, I followed a lot of the book [\ref{ref9}], \textit{Kivy - Interactive Applications and Games in Python - Second Edition} by Roberto Ulloa, which I have referenced in my bibliography, as it was a very useful book for learning the basics of Kivy, and I would highly recommend it to anyone who wants to learn Kivy.\\\vspace{0.3cm}
+
+
+
+% \subsection{GUI Practicality \& Industry Comparisons}
+% Explain the uses of the GUI, and delve into the fact you need to look up what other ones do for next turn
 
 % \subsection{Testing and Refinement}
 
@@ -451,35 +665,40 @@ Explain the uses of the GUI, and delve into the fact you need to look up what ot
 \section{Bibliography}
 \begin{small}
 \begin{enumerate}
-  \item \label{ref1} Alexander, C. (2008). *Market Risk Analysis: Value-at-Risk Models.* Hoboken, NJ: Wiley. [Online] Available at: \url{https://ebookcentral-proquest-com.ezproxy01.rhul.ac.uk/lib/rhul/reader.action?docID=416450}.
+  \item\label{ref1} Alexander, C. (2008). *Market Risk Analysis: Value-at-Risk Models.* Hoboken, NJ: Wiley. [Online] Available at: \url{https://ebookcentral-proquest-com.ezproxy01.rhul.ac.uk/lib/rhul/reader.action?docID=416450}.
   \\\textit{This book covers various aspects that I want to approach in this project, such as historical simulation, Monte Carlo simulation and various forms of testing that could be highly useful for my project.}
   
-  \item \label{ref2} Arbuckle, D. (2017). *Daniel Arbuckle’s Mastering Python: Build Powerful Python Applications.* Birmingham, England: Packt. [Online] Available at: \url{https://learning.oreilly.com/library/view/daniel-arbuckles-mastering/9781787283695/?ar=}.
+  \item\label{ref2} Arbuckle, D. (2017). *Daniel Arbuckle’s Mastering Python: Build Powerful Python Applications.* Birmingham, England: Packt. [Online] Available at: \url{https://learning.oreilly.com/library/view/daniel-arbuckles-mastering/9781787283695/?ar=}.
   \\\textit{I chose this reference as it helps with python packaging, being able to turn a python code and all its GUI and libraries into a single executable file, which is something I want to be able to do for this project.}
 
-  \item \label{ref3} Choudhry, M. (2006). *An Introduction to Value-at-Risk.* Chichester: John Wiley \& Sons Limited. [Online] Available at: \\ \url{https://learning.oreilly.com/library/view/an-introduction-to/9780470017579/}.
+  \item\label{ref3} Choudhry, M. (2006). *An Introduction to Value-at-Risk.* Chichester: John Wiley \& Sons Limited. [Online] Available at: \\ \url{https://learning.oreilly.com/library/view/an-introduction-to/9780470017579/}.
   \\\textit{Covers similar topics to the first reference, but seems to go into more detail on specific issues that I may need to address in this project.}
   
-  \item \label{ref4} Duffie, D. and Pan, J. (2019). *An Overview of Value at Risk.* [Online] Available at: \url{http://web.mit.edu/people/junpan/ddjp.pdf}.
+  \item\label{ref4} Duffie, D. and Pan, J. (2019). *An Overview of Value at Risk.* [Online] Available at: \url{http://web.mit.edu/people/junpan/ddjp.pdf}.
   \\\textit{A much shorter reference, it is a paper that covers the basics of Value at Risk, which I will be using to help me understand the fundamentals of the topic since I have been able to follow it better then the other references.}
   
-  \item \label{ref5} Föllmer, H. and Schied, A. (2016). *Stochastic Finance: An Introduction in Discrete Time.* Berlin: de Gruyter. [PDF]
+  \item\label{ref5} Föllmer, H. and Schied, A. (2016). *Stochastic Finance: An Introduction in Discrete Time.* Berlin: de Gruyter. [PDF]
   \\\textit{A recommended reference from my supervisor, it is a book that covers higher level concepts relating to my project but also provides an overview of stochastic finance in general, which I have seen to be useful in understanding the topic.}
   
-  \item \label{ref6} Hull, J.C. (2008). *Options, Futures, and Other Derivatives.* Upper Saddle River, NJ: Prentice Hall. [PDF]
+  \item\label{ref6} Hull, J.C. (2008). *Options, Futures, and Other Derivatives.* Upper Saddle River, NJ: Prentice Hall. [PDF]
   \\\textit{This is my main reference for the project, as it is the main textbook suggested. It has a relevant chapter on Value at Risk, which explores many of the different aspects that I will need to look into for this project.}
 
-  \item \label{ref7} Pritsker, M. (1997). "Evaluating Value at Risk Methodologies: Accuracy versus Computational Time." *Journal of Financial Services Research* 12: 201-242. [Online] Available at: \url{https://doi.org/10.1023/A:1007978820465}.
+  \item\label{ref7} Pritsker, M. (1997). "Evaluating Value at Risk Methodologies: Accuracy versus Computational Time." *Journal of Financial Services Research* 12: 201-242. [Online] Available at: \url{https://doi.org/10.1023/A:1007978820465}.
   \\\textit{Another short reference, this is a paper that compares the accuracy and computational time of various Value at Risk methodologies, which I will be using to help me understand the different methodologies and how I can apply them to my project in the most efficient manner. }
 
-  \item \label{ref8} Raman, K. (2015). *Mastering Python Data Visualization: Generate Effective Results in a Variety of Visually Appealing Charts Using the Plotting Packages in Python.* Birmingham: Packt Publishing Limited. [Online] Available at: \url{https://learning.oreilly.com/library/view/mastering-python-data/9781783988327/?ar=}.
+  \item\label{ref8} Raman, K. (2015). *Mastering Python Data Visualization: Generate Effective Results in a Variety of Visually Appealing Charts Using the Plotting Packages in Python.* Birmingham: Packt Publishing Limited. [Online] Available at: \url{https://learning.oreilly.com/library/view/mastering-python-data/9781783988327/?ar=}.
   \\\textit{This reference covers various aspects of data visualisation, which I will be using to help me understand how to best display important information in a visually appealing way for my project.}
 
-  \item \label{ref9} Ulloa, R. (2015). *Kivy - Interactive Applications and Games in Python - Second Edition.* Packt Publishing. [Online] Available at: \url{https://learning.oreilly.com/library/view/kivy-interactive/9781785286926/?ar=}.
+  \item\label{ref9} Ulloa, R. (2015). *Kivy - Interactive Applications and Games in Python - Second Edition.* Packt Publishing. [Online] Available at: \url{https://learning.oreilly.com/library/view/kivy-interactive/9781785286926/?ar=}.
   \\\textit{This reference is not being used for its content on game development, rather Kivy is a framework that can help create a GUI that works on both desktop operating systems as well as mobile operating systems, which I think I would like to explore the possibility of when developing the application}
 
-  \item \label{ref10} Weiming, J.M. (2015). *Mastering Python for Finance: Understand, Design, and Implement State-of-the-Art Mathematical and Statistical Applications Used in Finance with Python.* Birmingham, England: Packt Publishing. [Online] Available at: \url{https://learning.oreilly.com/library/view/mastering-python-for/9781784394516/}.
+  \item\label{ref10} Weiming, J.M. (2015). *Mastering Python for Finance: Understand, Design, and Implement State-of-the-Art Mathematical and Statistical Applications Used in Finance with Python.* Birmingham, England: Packt Publishing. [Online] Available at: \url{https://learning.oreilly.com/library/view/mastering-python-for/9781784394516/}.
   \\\textit{This reference covers various ways of handling financial data within python, which I will ensure to help me understand how to best handle the data I will be using within my project.}
+
+  \item\label{ref11} Wasserstein, R.L., \& Lazar, N.A. (2016). *The ASA Statement on p-Values: Context, Process, and Purpose.* The American Statistician, 70(2), 129-133. [Online] Available at: \url{https://www.tandfonline.com/doi/full/10.1080/00031305.2016.1154108}.
+  \\\textit{This reference is crucial for understanding the nuanced interpretation and use of p-values in statistical hypothesis testing, since it is  relevant for the back-testing aspect of my project involving the VaR model validation.}
+
+  
 \end{enumerate}
 \end{small}
 
