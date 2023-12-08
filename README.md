@@ -1,5 +1,4 @@
 # Final Year Project
+• Youtube Video showcasing Term 1 main program: https://youtu.be/2GIWug_IESI
 
-This repository has been created to store your final year project.
-
-You may edit it as you like, but please do not remove the default topics or the project members list. These need to stay as currently defined in order for your supervisor to be able to find your project.
+• All other programs included within my PROJECT Git repository are simple python programs that can just be ran normally, these mainly being found within the "Command Line VaR Programs" folder. The GUI program has been compiled into a .exe file within the main directory, called “Initial Design Test.exe”, it will open up a terminal when ran but please ignore it, it should work perfectly otherwise. The code for it is within the "Kivy" folder, that has other kivy tests inside it as well.
